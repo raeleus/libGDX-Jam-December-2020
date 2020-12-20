@@ -20,6 +20,10 @@ public class Resources {
 
     public static AnimationStateData spine_libgdxAnimationData;
 
+    public static SkeletonData spine_player;
+
+    public static AnimationStateData spine_playerAnimationData;
+
     public static SkeletonData spine_raseyaLogo;
 
     public static AnimationStateData spine_raseyaLogoAnimationData;
@@ -58,6 +62,17 @@ public class Resources {
         spine_libgdxAnimationData = assetManager.get("spine/libgdx.json-animation");
         LibgdxAnimation.animation = spine_libgdx.findAnimation("animation");
         LibgdxAnimation.stand = spine_libgdx.findAnimation("stand");
+        spine_player = assetManager.get("spine/player.json");
+        spine_playerAnimationData = assetManager.get("spine/player.json-animation");
+        PlayerAnimation.east = spine_player.findAnimation("east");
+        PlayerAnimation.north = spine_player.findAnimation("north");
+        PlayerAnimation.northEast = spine_player.findAnimation("north-east");
+        PlayerAnimation.northWest = spine_player.findAnimation("north-west");
+        PlayerAnimation.south = spine_player.findAnimation("south");
+        PlayerAnimation.southEast = spine_player.findAnimation("south-east");
+        PlayerAnimation.southWest = spine_player.findAnimation("south-west");
+        PlayerAnimation.stand = spine_player.findAnimation("stand");
+        PlayerAnimation.west = spine_player.findAnimation("west");
         spine_raseyaLogo = assetManager.get("spine/raseya-logo.json");
         spine_raseyaLogoAnimationData = assetManager.get("spine/raseya-logo.json-animation");
         RaseyaLogoAnimation.animation = spine_raseyaLogo.findAnimation("animation");
@@ -88,6 +103,26 @@ public class Resources {
         public static Animation animation;
 
         public static Animation stand;
+    }
+
+    public static class PlayerAnimation {
+        public static Animation east;
+
+        public static Animation north;
+
+        public static Animation northEast;
+
+        public static Animation northWest;
+
+        public static Animation south;
+
+        public static Animation southEast;
+
+        public static Animation southWest;
+
+        public static Animation stand;
+
+        public static Animation west;
     }
 
     public static class RaseyaLogoAnimation {

@@ -1,0 +1,112 @@
+{
+"skeleton": {
+	"hash": "9adcZSJ2TiHGDEWGVxBvxHdqmvY",
+	"spine": "3.8.99",
+	"x": -12,
+	"y": 0.35,
+	"width": 24,
+	"height": 42,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root", "length": 45.9 }
+],
+"slots": [
+	{ "name": "game/Player_Idle1", "bone": "bone", "attachment": "game/Player_Idle5" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/Player_Idle1": {
+				"game/Player_Idle1": { "y": 21.35, "width": 24, "height": 42 },
+				"game/Player_Idle2": { "y": 21.35, "width": 24, "height": 42 },
+				"game/Player_Idle3": { "y": 21.35, "width": 24, "height": 42 },
+				"game/Player_Idle4": { "y": 21.35, "width": 24, "height": 42 },
+				"game/Player_Idle5": { "y": 21.35, "width": 24, "height": 42 },
+				"game/Player_Idle6": { "y": 21.35, "width": 24, "height": 42 },
+				"game/Player_Idle7": { "y": 21.35, "width": 24, "height": 42 },
+				"game/Player_Idle8": { "y": 21.35, "width": 24, "height": 42 },
+				"game/Player_Idle9": { "y": 21.35, "width": 24, "height": 42 }
+			}
+		}
+	}
+],
+"animations": {
+	"east": {
+		"slots": {
+			"game/Player_Idle1": {
+				"attachment": [
+					{ "name": "game/Player_Idle6" }
+				]
+			}
+		}
+	},
+	"north": {
+		"slots": {
+			"game/Player_Idle1": {
+				"attachment": [
+					{ "name": "game/Player_Idle2" }
+				]
+			}
+		}
+	},
+	"north-east": {
+		"slots": {
+			"game/Player_Idle1": {
+				"attachment": [
+					{ "name": "game/Player_Idle3" }
+				]
+			}
+		}
+	},
+	"north-west": {
+		"slots": {
+			"game/Player_Idle1": {
+				"attachment": [
+					{ "name": "game/Player_Idle1" }
+				]
+			}
+		}
+	},
+	"south": {
+		"slots": {
+			"game/Player_Idle1": {
+				"attachment": [
+					{ "name": "game/Player_Idle8" }
+				]
+			}
+		}
+	},
+	"south-east": {
+		"slots": {
+			"game/Player_Idle1": {
+				"attachment": [
+					{ "name": "game/Player_Idle9" }
+				]
+			}
+		}
+	},
+	"south-west": {
+		"slots": {
+			"game/Player_Idle1": {
+				"attachment": [
+					{ "name": "game/Player_Idle7" }
+				]
+			}
+		}
+	},
+	"stand": {},
+	"west": {
+		"slots": {
+			"game/Player_Idle1": {
+				"attachment": [
+					{ "name": "game/Player_Idle4" }
+				]
+			}
+		}
+	}
+}
+}

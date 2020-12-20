@@ -48,7 +48,7 @@ public class GameScreen extends JamScreen {
     
         gameScreen = this;
         vfxEffect = new GlitchEffect();
-        vfxManager.addEffect(vfxEffect);
+//        vfxManager.addEffect(vfxEffect);
         BG_COLOR.set(Color.PINK);
     
         paused = false;
@@ -100,15 +100,9 @@ public class GameScreen extends JamScreen {
         innerViewport.update(WORLD_WIDTH, WORLD_HEIGHT);
     
         entityController.clear();
-        BallTestEntity ballTestEntity = new BallTestEntity();
-        ballTestEntity.moveCamera = true;
-        entityController.add(ballTestEntity);
-    
-        for (int i = 0; i < 10; i++) {
-            ballTestEntity = new BallTestEntity();
-            ballTestEntity.setPosition(MathUtils.random(WORLD_WIDTH), WORLD_HEIGHT);
-            entityController.add(ballTestEntity);
-        }
+        var player = new PlayerEntity();
+        entityController.add(player);
+        
         vfxFrameBuffer = new VfxFrameBuffer(Format.RGB888);
         vfxFrameBuffer.initialize(WORLD_WIDTH, WORLD_HEIGHT);
         vfxManager.resize(WORLD_WIDTH, WORLD_HEIGHT);
@@ -121,13 +115,6 @@ public class GameScreen extends JamScreen {
             vfxManager.update(delta);
         }
         stage.act(delta);
-    
-        if (isBindingJustPressed(Binding.LEFT)) {
-            System.out.println("left");
-        }
-        if (isBindingJustPressed(Binding.UP)) {
-            System.out.println("up");
-        }
         
         fpsLabel.setText(Gdx.graphics.getFramesPerSecond());
     }
@@ -143,7 +130,7 @@ public class GameScreen extends JamScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         innerViewport.apply();
         batch.setProjectionMatrix(camera.combined);
-        shapeDrawer.setColor(isBindingPressed(Binding.LEFT) && isBindingPressed(Binding.UP) ? Color.ORANGE : Color.GREEN);
+        shapeDrawer.setColor(Color.GREEN);
         shapeDrawer.filledRectangle(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
         shapeDrawer.setColor(Color.BLUE);
         shapeDrawer.setDefaultLineWidth(10);
