@@ -25,7 +25,7 @@ import com.ray3k.template.transitions.*;
 import static com.ray3k.template.Resources.*;
 
 public class Core extends JamGame {
-    public static final String PROJECT_NAME = "Template Game";
+    public static final String PROJECT_NAME = "libgdx15";
     public static Core core;
     public static Skin skin;
     public static SkeletonRenderer skeletonRenderer;
