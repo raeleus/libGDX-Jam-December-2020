@@ -145,62 +145,76 @@ raseya-logo/white
   index: -1
 
 textures3.png
-size: 1024,1024
+size: 512,512
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 button
   rotate: false
-  xy: 385, 739
+  xy: 1, 46
   size: 158, 55
   orig: 158, 55
   offset: 0, 0
   index: -1
+font
+  rotate: false
+  xy: 1, 197
+  size: 505, 74
+  orig: 505, 75
+  offset: 0, 0
+  index: -1
+large
+  rotate: false
+  xy: 1, 273
+  size: 505, 236
+  orig: 505, 237
+  offset: 0, 0
+  index: -1
 scroll
   rotate: false
-  xy: 569, 731
+  xy: 476, 170
   size: 6, 6
   orig: 6, 6
   offset: 0, 0
   index: -1
 select-box
   rotate: false
-  xy: 545, 739
+  xy: 161, 46
   size: 158, 55
   orig: 158, 55
   offset: 0, 0
   index: -1
 slider
   rotate: false
-  xy: 385, 733
+  xy: 321, 97
   size: 174, 4
   orig: 174, 4
   offset: 0, 0
   index: -1
 slider-knob
   rotate: false
-  xy: 561, 720
+  xy: 476, 178
   size: 6, 17
   orig: 6, 17
   offset: 0, 0
   index: -1
 title
   rotate: false
-  xy: 1, 702
+  xy: 1, 103
   size: 382, 92
   orig: 463, 108
   offset: 41, 9
   index: -1
 white
   rotate: false
-  xy: 577, 736
+  xy: 508, 508
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 window
   rotate: false
-  xy: 705, 704
+  xy: 385, 105
   size: 89, 90
   orig: 89, 90
   offset: 0, 0
