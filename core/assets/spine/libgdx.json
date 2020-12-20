@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "74Z79Ul5EkUZ62kuXDO/aQYdiJA", "spine": "3.8.99", "width": 1024, "height": 576, "images": "", "audio": "" },
+"skeleton": { "hash": "08TOTibyFyDL20b7AlncwZMSLlE", "spine": "3.8.99", "width": 1024, "height": 576, "images": "", "audio": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "logo/b", "parent": "root", "length": 38.23, "x": 417.02, "y": 280.55 },
@@ -22,6 +22,7 @@
 	{ "name": "logo/web3", "parent": "logo/web2", "x": 425.57, "y": -0.3, "color": "abe323ff" }
 ],
 "slots": [
+	{ "name": "clip", "bone": "root", "attachment": "clip" },
 	{ "name": "logo/white", "bone": "root" },
 	{ "name": "logo/template", "bone": "root" },
 	{ "name": "logo/l", "bone": "root", "attachment": "logo/l" },
@@ -59,6 +60,15 @@
 	{
 		"name": "default",
 		"attachments": {
+			"clip": {
+				"clip": {
+					"type": "clipping",
+					"end": "clip",
+					"vertexCount": 4,
+					"vertices": [ 0, 0, -0.02, 576.02, 1024, 576, 1024, 0.01 ],
+					"color": "ce3a3aff"
+				}
+			},
 			"logo/b": {
 				"logo/b": { "x": 11.1, "y": 7, "width": 46, "height": 58 },
 				"logo/b-venom": { "x": 9.09, "y": 9.17, "width": 56, "height": 76 }
