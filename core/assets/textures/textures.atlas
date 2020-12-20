@@ -118,42 +118,63 @@ logo/x-spiderman
   index: -1
 
 textures2.png
-size: 512,512
+size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 button
   rotate: false
-  xy: 12, 328
+  xy: 385, 739
   size: 158, 55
   orig: 158, 55
   offset: 0, 0
   index: -1
 scroll
   rotate: false
-  xy: 4, 377
+  xy: 569, 731
   size: 6, 6
   orig: 6, 6
   offset: 0, 0
   index: -1
 select-box
   rotate: false
-  xy: 172, 328
+  xy: 545, 739
   size: 158, 55
   orig: 158, 55
   offset: 0, 0
   index: -1
+slider
+  rotate: false
+  xy: 385, 733
+  size: 174, 4
+  orig: 174, 4
+  offset: 0, 0
+  index: -1
+slider-knob
+  rotate: false
+  xy: 561, 720
+  size: 6, 17
+  orig: 6, 17
+  offset: 0, 0
+  index: -1
 title
   rotate: false
-  xy: 1, 234
+  xy: 1, 702
   size: 382, 92
   orig: 463, 108
   offset: 41, 9
   index: -1
 white
   rotate: false
-  xy: 1, 382
+  xy: 577, 736
   size: 1, 1
   orig: 1, 1
+  offset: 0, 0
+  index: -1
+window
+  rotate: false
+  xy: 705, 704
+  size: 89, 90
+  orig: 89, 90
   offset: 0, 0
   index: -1
