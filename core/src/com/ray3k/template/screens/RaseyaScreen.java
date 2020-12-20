@@ -59,7 +59,7 @@ public class RaseyaScreen extends JamScreen {
             @Override
             public void complete(AnimationState.TrackEntry entry) {
                 if (entry.getAnimation() == animation) {
-                    core.transition(new LogoScreen());
+                    core.transition(new MenuScreen());
                 }
             }
     
@@ -76,13 +76,13 @@ public class RaseyaScreen extends JamScreen {
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
-                core.transition(new LogoScreen());
+                core.transition(new MenuScreen());
                 return true;
             }
     
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                core.transition(new LogoScreen());
+                core.transition(new MenuScreen());
                 return true;
             }
         });
