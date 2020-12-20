@@ -12,6 +12,10 @@ import com.esotericsoftware.spine.SkeletonData;
 public class Resources {
     public static Skin skin_skin;
 
+    public static SkeletonData spine_introduction;
+
+    public static AnimationStateData spine_introductionAnimationData;
+
     public static SkeletonData spine_libgdx;
 
     public static AnimationStateData spine_libgdxAnimationData;
@@ -46,6 +50,10 @@ public class Resources {
 
     public static void loadResources(AssetManager assetManager) {
         skin_skin = assetManager.get("skin/skin.json");
+        spine_introduction = assetManager.get("spine/introduction.json");
+        spine_introductionAnimationData = assetManager.get("spine/introduction.json-animation");
+        IntroductionAnimation.animation = spine_introduction.findAnimation("animation");
+        IntroductionAnimation.stand = spine_introduction.findAnimation("stand");
         spine_libgdx = assetManager.get("spine/libgdx.json");
         spine_libgdxAnimationData = assetManager.get("spine/libgdx.json-animation");
         LibgdxAnimation.animation = spine_libgdx.findAnimation("animation");
@@ -68,6 +76,12 @@ public class Resources {
         sfx_logoX = assetManager.get("sfx/logo/x.mp3");
         bgm_audioSample = assetManager.get("bgm/audio-sample.mp3");
         bgm_menu = assetManager.get("bgm/menu.mp3");
+    }
+
+    public static class IntroductionAnimation {
+        public static Animation animation;
+
+        public static Animation stand;
     }
 
     public static class LibgdxAnimation {

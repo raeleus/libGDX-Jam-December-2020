@@ -1,7 +1,6 @@
 package com.ray3k.template.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -14,29 +13,31 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectSet;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.esotericsoftware.spine.*;
+import com.esotericsoftware.spine.AnimationState;
+import com.esotericsoftware.spine.Event;
+import com.esotericsoftware.spine.Skeleton;
 import com.esotericsoftware.spine.utils.SkeletonDrawable;
 import com.ray3k.template.*;
 
 import static com.ray3k.template.Core.*;
+import static com.ray3k.template.Resources.IntroductionAnimation.*;
 import static com.ray3k.template.Resources.*;
-import static com.ray3k.template.Resources.Ray3kAnimation.*;
 
-public class LogoScreen extends JamScreen {
+public class IntroductionScreen extends JamScreen {
     private Stage stage;
     private Array<SpineDrawable> spineDrawables;
-    private final static Color BG_COLOR = new Color(Color.BLACK);
+    private final static Color BG_COLOR = new Color(Color.WHITE);
     private ObjectSet<Sound> sounds;
     
     @Override
     public void show() {
         super.show();
-        
+
         spineDrawables = new Array<>();
         sounds = new ObjectSet<>();
-    
-        Skeleton skeleton = new Skeleton(spine_ray3k);
-        AnimationState animationState = new AnimationState(spine_ray3kAnimationData);
+        
+        Skeleton skeleton = new Skeleton(spine_introduction);
+        AnimationState animationState = new AnimationState(spine_introductionAnimationData);
         var spineDrawable = new SpineDrawable(skeletonRenderer, skeleton, animationState);
         spineDrawable.getAnimationState().setAnimation(0, stand, false);
         spineDrawable.getAnimationState().apply(spineDrawable.getSkeleton());
@@ -48,21 +49,20 @@ public class LogoScreen extends JamScreen {
         Table root = new Table();
         root.setFillParent(true);
         stage.addActor(root);
-        
+    
         Image image = new Image(spineDrawable);
         image.setScaling(Scaling.fit);
         root.add(image).grow();
-    
         spineDrawable.getAnimationState().setAnimation(0, animation, false);
-        
+    
         spineDrawable.getAnimationState().addListener(new AnimationState.AnimationStateAdapter() {
             @Override
             public void complete(AnimationState.TrackEntry entry) {
                 if (entry.getAnimation() == animation) {
-                    core.transition(new RaseyaScreen());
+                    core.transition(new GameScreen());
                 }
             }
-            
+    
             @Override
             public void event(AnimationState.TrackEntry entry, Event event) {
                 if (event.getData().getAudioPath() != null && !event.getData().getAudioPath().equals("")) {
@@ -76,13 +76,13 @@ public class LogoScreen extends JamScreen {
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
-                core.transition(new RaseyaScreen());
+                core.transition(new GameScreen());
                 return true;
             }
-            
+    
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                core.transition(new RaseyaScreen());
+                core.transition(new GameScreen());
                 return true;
             }
         });

@@ -118,20 +118,27 @@ logo/x-spiderman
   index: -1
 
 textures2.png
-size: 512,512
+size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+raseya-logo/introduction
+  rotate: true
+  xy: 4, 462
+  size: 314, 385
+  orig: 314, 385
+  offset: 0, 0
+  index: -1
 raseya-logo/raseya-logo
-  rotate: false
-  xy: 1, 4
+  rotate: true
+  xy: 391, 462
   size: 314, 385
   orig: 314, 385
   offset: 0, 0
   index: -1
 raseya-logo/white
   rotate: false
-  xy: 1, 1
+  xy: 1, 775
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
