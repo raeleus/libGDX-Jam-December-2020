@@ -16,6 +16,10 @@ public class Resources {
 
     public static AnimationStateData spine_libgdxAnimationData;
 
+    public static SkeletonData spine_raseyaLogo;
+
+    public static AnimationStateData spine_raseyaLogoAnimationData;
+
     public static SkeletonData spine_ray3k;
 
     public static AnimationStateData spine_ray3kAnimationData;
@@ -46,6 +50,10 @@ public class Resources {
         spine_libgdxAnimationData = assetManager.get("spine/libgdx.json-animation");
         LibgdxAnimation.animation = spine_libgdx.findAnimation("animation");
         LibgdxAnimation.stand = spine_libgdx.findAnimation("stand");
+        spine_raseyaLogo = assetManager.get("spine/raseya-logo.json");
+        spine_raseyaLogoAnimationData = assetManager.get("spine/raseya-logo.json-animation");
+        RaseyaLogoAnimation.animation = spine_raseyaLogo.findAnimation("animation");
+        RaseyaLogoAnimation.stand = spine_raseyaLogo.findAnimation("stand");
         spine_ray3k = assetManager.get("spine/ray3k.json");
         spine_ray3kAnimationData = assetManager.get("spine/ray3k.json-animation");
         Ray3kAnimation.animation = spine_ray3k.findAnimation("animation");
@@ -63,6 +71,12 @@ public class Resources {
     }
 
     public static class LibgdxAnimation {
+        public static Animation animation;
+
+        public static Animation stand;
+    }
+
+    public static class RaseyaLogoAnimation {
         public static Animation animation;
 
         public static Animation stand;
