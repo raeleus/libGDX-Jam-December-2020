@@ -22,19 +22,19 @@ public class Resources {
 
     public static TextureAtlas textures_textures;
 
-    public static Sound sfx_ahh;
-
     public static Sound sfx_click;
 
-    public static Sound sfx_libgdx;
+    public static Sound sfx_logoHit;
 
-    public static Sound sfx_pleaseDontKillMe;
+    public static Sound sfx_logoLibgd;
 
-    public static Sound sfx_shot;
+    public static Sound sfx_logoRay3kSong;
 
-    public static Sound sfx_swoosh;
+    public static Sound sfx_logoThwip;
 
-    public static Sound sfx_tv;
+    public static Sound sfx_logoVenom;
+
+    public static Sound sfx_logoX;
 
     public static Music bgm_audioSample;
 
@@ -51,13 +51,13 @@ public class Resources {
         Ray3kAnimation.animation = spine_ray3k.findAnimation("animation");
         Ray3kAnimation.stand = spine_ray3k.findAnimation("stand");
         textures_textures = assetManager.get("textures/textures.atlas");
-        sfx_ahh = assetManager.get("sfx/ahh.mp3");
         sfx_click = assetManager.get("sfx/click.mp3");
-        sfx_libgdx = assetManager.get("sfx/libgdx.mp3");
-        sfx_pleaseDontKillMe = assetManager.get("sfx/please don't kill me.mp3");
-        sfx_shot = assetManager.get("sfx/shot.mp3");
-        sfx_swoosh = assetManager.get("sfx/swoosh.mp3");
-        sfx_tv = assetManager.get("sfx/tv.mp3");
+        sfx_logoHit = assetManager.get("sfx/logo/hit.mp3");
+        sfx_logoLibgd = assetManager.get("sfx/logo/libgd.mp3");
+        sfx_logoRay3kSong = assetManager.get("sfx/logo/ray3k song.mp3");
+        sfx_logoThwip = assetManager.get("sfx/logo/thwip.mp3");
+        sfx_logoVenom = assetManager.get("sfx/logo/venom.mp3");
+        sfx_logoX = assetManager.get("sfx/logo/x.mp3");
         bgm_audioSample = assetManager.get("bgm/audio-sample.mp3");
         bgm_menu = assetManager.get("bgm/menu.mp3");
     }

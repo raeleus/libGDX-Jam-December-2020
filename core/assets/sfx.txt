@@ -1,7 +1,7 @@
-sfx/ahh.mp3
 sfx/click.mp3
-sfx/libgdx.mp3
-sfx/please don't kill me.mp3
-sfx/shot.mp3
-sfx/swoosh.mp3
-sfx/tv.mp3
+sfx/logo/hit.mp3
+sfx/logo/libgd.mp3
+sfx/logo/ray3k song.mp3
+sfx/logo/thwip.mp3
+sfx/logo/venom.mp3
+sfx/logo/x.mp3
