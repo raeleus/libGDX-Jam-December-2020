@@ -100,6 +100,8 @@ public class GameScreen extends JamScreen {
         innerViewport.update(WORLD_WIDTH, WORLD_HEIGHT);
     
         entityController.clear();
+        var map = new MapEntity();
+        entityController.add(map);
         var player = new PlayerEntity();
         entityController.add(player);
         
