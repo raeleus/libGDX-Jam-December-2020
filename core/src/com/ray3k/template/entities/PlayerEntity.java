@@ -2,15 +2,15 @@ package com.ray3k.template.entities;
 
 import com.dongbat.jbump.Collisions;
 import com.ray3k.template.*;
-import com.ray3k.template.Core.*;
-import com.ray3k.template.screens.*;
 
 import static com.ray3k.template.Core.Binding.*;
 import static com.ray3k.template.Resources.*;
 import static com.ray3k.template.screens.GameScreen.*;
 
 public class PlayerEntity extends Entity {
-    private final float PLAYER_SPEED = 500;
+    private final float SPRINT_SPEED = 500;
+    private final float MOVE_SPEED = 250;
+    
     @Override
     public void create() {
         setSkeletonData(spine_player, spine_playerAnimationData);
@@ -25,7 +25,7 @@ public class PlayerEntity extends Entity {
     @Override
     public void act(float delta) {
         float direction;
-        float speed = PLAYER_SPEED;
+        float speed = SPRINT_SPEED;
         if (gameScreen.areAllBindingsPressed(UP, RIGHT)) {
             animationState.setAnimation(0, PlayerAnimation.northEast, true);
             direction = 45;

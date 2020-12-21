@@ -1,6 +1,7 @@
 package com.ray3k.template.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -59,7 +60,7 @@ public class RaseyaScreen extends JamScreen {
             @Override
             public void complete(AnimationState.TrackEntry entry) {
                 if (entry.getAnimation() == animation) {
-                    core.transition(new MenuScreen());
+                    core.transition(new GameScreen());
                 }
             }
     
@@ -76,13 +77,13 @@ public class RaseyaScreen extends JamScreen {
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
-                core.transition(new MenuScreen());
+                core.transition(new GameScreen());
                 return true;
             }
     
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                core.transition(new MenuScreen());
+                core.transition(new GameScreen());
                 return true;
             }
         });

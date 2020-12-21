@@ -1,6 +1,7 @@
 package com.ray3k.template.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -51,7 +52,7 @@ public class OptionsScreen extends JamScreen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Gdx.input.setInputProcessor(null);
-                core.transition(new MenuScreen());
+                core.transition(new LibgdxScreen());
             }
         });
         

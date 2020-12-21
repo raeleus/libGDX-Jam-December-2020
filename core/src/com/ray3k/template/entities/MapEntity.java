@@ -1,7 +1,6 @@
 package com.ray3k.template.entities;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasSprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.dongbat.jbump.Collisions;
 import com.ray3k.template.*;
 
