@@ -32,6 +32,7 @@ public class Utils {
     private static final Ray rayTemp = new Ray();
     private static final Vector2 vector2 = new Vector2();
     private static Pattern fileNamePattern = new Pattern("([^/.]+)(?:\\.?[^/.])*$");
+    private static Pattern noExtensionPattern = new Pattern(".*(?=\\.)");
     private static final Rectangle tempRectangle1 = new Rectangle();
     
     public static Array<Actor> getActorsRecursive(Actor actor) {
@@ -141,6 +142,12 @@ public class Utils {
         Matcher matcher = fileNamePattern.matcher(path);
         matcher.find();
         return matcher.group(1);
+    }
+    
+    public static String filePathNoExtension(String path) {
+        Matcher matcher = noExtensionPattern.matcher(path);
+        matcher.find();
+        return matcher.group(0);
     }
     
     public static String mouseButtonToString(int button) {
