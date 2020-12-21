@@ -31,7 +31,7 @@ public class GameScreen extends JamScreen {
     public static GameScreen gameScreen;
     public static final Color BG_COLOR = new Color();
     public Stage stage;
-    public ShapeDrawer shapeDrawer;
+    public static ShapeDrawer shapeDrawer;
     public boolean paused;
     private ChainVfxEffect vfxEffect;
     private Label fpsLabel;
