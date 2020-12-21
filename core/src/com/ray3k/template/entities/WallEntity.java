@@ -1,16 +1,22 @@
 package com.ray3k.template.entities;
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasSprite;
+import com.badlogic.gdx.graphics.Color;
 import com.dongbat.jbump.Collisions;
-import com.ray3k.template.*;
 
-import static com.ray3k.template.Core.*;
+import static com.ray3k.template.screens.GameScreen.*;
 
-public class MapEntity extends Entity {
-    private AtlasSprite sprite;
+public class WallEntity extends Entity {
+    public float width;
+    public float height;
+    
+    public WallEntity(float width, float height) {
+        this.width = width;
+        this.height = height;
+    }
+    
     @Override
     public void create() {
-        sprite = new AtlasSprite(Resources.textures_textures.findRegion("game/Template_Map_1"));
+    
     }
     
     @Override
@@ -25,7 +31,8 @@ public class MapEntity extends Entity {
     
     @Override
     public void draw(float delta) {
-        sprite.draw(batch);
+        shapeDrawer.setColor(Color.ORANGE);
+        shapeDrawer.filledRectangle(x, y, width, height);
     }
     
     @Override

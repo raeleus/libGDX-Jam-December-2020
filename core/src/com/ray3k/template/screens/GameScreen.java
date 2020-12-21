@@ -14,12 +14,15 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crashinvaders.vfx.effects.ChainVfxEffect;
 import com.crashinvaders.vfx.framebuffer.VfxFrameBuffer;
 import com.ray3k.template.*;
+import com.ray3k.template.OgmoReader.*;
 import com.ray3k.template.entities.*;
 import com.ray3k.template.screens.DialogPause.*;
 import com.ray3k.template.vfx.*;
@@ -46,7 +49,6 @@ public class GameScreen extends JamScreen {
     
         gameScreen = this;
         vfxEffect = new GlitchEffect();
-//        vfxManager.addEffect(vfxEffect);
         BG_COLOR.set(Color.PINK);
     
         paused = false;
@@ -97,15 +99,43 @@ public class GameScreen extends JamScreen {
         innerViewport = new FitViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
         innerViewport.update(WORLD_WIDTH, WORLD_HEIGHT);
     
-        entityController.clear();
-        var map = new MapEntity();
-        entityController.add(map);
-        var player = new PlayerEntity();
-        entityController.add(player);
-        
         vfxFrameBuffer = new VfxFrameBuffer(Format.RGB888);
         vfxFrameBuffer.initialize(WORLD_WIDTH, WORLD_HEIGHT);
         vfxManager.resize(WORLD_WIDTH, WORLD_HEIGHT);
+        
+        entityController.clear();
+        
+        var reader = new OgmoReader();
+        reader.addListener(new OgmoAdapter() {
+            @Override
+            public void entity(String name, int id, int x, int y, int width, int height, boolean flippedX,
+                               boolean flippedY, int originX, int originY, int rotation, Array<EntityNode> nodes,
+                               ObjectMap<String, OgmoValue> valuesMap) {
+                switch (name) {
+                    case "player":
+                        var player = new PlayerEntity();
+                        player.setPosition(x, y);
+                        entityController.add(player);
+                        break;
+                    case "wall":
+                        var wall = new WallEntity(width, height);
+                        wall.setPosition(x, y);
+                        entityController.add(wall);
+                        break;
+                    case "pit":
+                        break;
+                }
+            }
+    
+            @Override
+            public void decal(int centerX, int centerY, float scaleX, float scaleY, int rotation, String texture,
+                              String folder) {
+                var name = Utils.filePathNoExtension(texture);
+                var decalEntity = new DecalEntity(centerX, centerY, name);
+                entityController.add(decalEntity);
+            }
+        });
+        reader.readFile(Gdx.files.internal("levels/level-test.json"));
     }
     
     @Override
@@ -134,7 +164,7 @@ public class GameScreen extends JamScreen {
         shapeDrawer.filledRectangle(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
         shapeDrawer.setColor(Color.BLUE);
         shapeDrawer.setDefaultLineWidth(10);
-        shapeDrawer.rectangle(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
+//        shapeDrawer.rectangle(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
         entityController.draw(paused ? 0 : delta);
         batch.end();
         vfxManager.endInputCapture();
