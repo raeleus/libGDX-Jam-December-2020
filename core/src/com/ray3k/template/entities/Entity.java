@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.dongbat.jbump.CollisionFilter;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Item;
+import com.dongbat.jbump.Rect;
 import com.dongbat.jbump.Response.Result;
 import com.esotericsoftware.spine.*;
 import com.ray3k.template.*;
@@ -166,5 +167,9 @@ public abstract class Entity {
     
     public boolean isOutside(float left, float bottom, float width, float height, float border) {
         return x < left - border || x > left + width + border || y < bottom - border || y > bottom + height + border;
+    }
+    
+    public void updateCollisionBox() {
+        world.update(item, x + bboxX, y + bboxY);
     }
 }
