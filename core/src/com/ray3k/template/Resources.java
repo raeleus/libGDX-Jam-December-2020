@@ -12,6 +12,10 @@ import com.esotericsoftware.spine.SkeletonData;
 public class Resources {
     public static Skin skin_skin;
 
+    public static SkeletonData spine_enemy;
+
+    public static AnimationStateData spine_enemyAnimationData;
+
     public static SkeletonData spine_introduction;
 
     public static AnimationStateData spine_introductionAnimationData;
@@ -54,6 +58,9 @@ public class Resources {
 
     public static void loadResources(AssetManager assetManager) {
         skin_skin = assetManager.get("skin/skin.json");
+        spine_enemy = assetManager.get("spine/enemy.json");
+        spine_enemyAnimationData = assetManager.get("spine/enemy.json-animation");
+        EnemyAnimation.animation = spine_enemy.findAnimation("animation");
         spine_introduction = assetManager.get("spine/introduction.json");
         spine_introductionAnimationData = assetManager.get("spine/introduction.json-animation");
         IntroductionAnimation.animation = spine_introduction.findAnimation("animation");
@@ -65,6 +72,7 @@ public class Resources {
         spine_player = assetManager.get("spine/player.json");
         spine_playerAnimationData = assetManager.get("spine/player.json-animation");
         PlayerAnimation.east = spine_player.findAnimation("east");
+        PlayerAnimation.hurt = spine_player.findAnimation("hurt");
         PlayerAnimation.jump = spine_player.findAnimation("jump");
         PlayerAnimation.north = spine_player.findAnimation("north");
         PlayerAnimation.northEast = spine_player.findAnimation("north-east");
@@ -96,6 +104,10 @@ public class Resources {
         bgm_menu = assetManager.get("bgm/menu.mp3");
     }
 
+    public static class EnemyAnimation {
+        public static Animation animation;
+    }
+
     public static class IntroductionAnimation {
         public static Animation animation;
 
@@ -110,6 +122,8 @@ public class Resources {
 
     public static class PlayerAnimation {
         public static Animation east;
+
+        public static Animation hurt;
 
         public static Animation jump;
 

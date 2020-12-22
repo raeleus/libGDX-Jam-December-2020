@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "Ty6DhgibD7pZ2st0mieRTweJ348",
+	"hash": "5C/lHQ/IV1GFzR83ouX6/VLyvU4",
 	"spine": "3.8.99",
 	"x": -12,
 	"y": 0.35,
@@ -52,6 +52,22 @@
 			}
 		}
 	},
+	"hurt": {
+		"bones": {
+			"bone": {
+				"translate": [
+					{},
+					{ "time": 0.5, "y": 9.56 },
+					{ "time": 1 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.5, "x": 1.506, "y": 1.506 },
+					{ "time": 1 }
+				]
+			}
+		}
+	},
 	"jump": {
 		"bones": {
 			"bone": {
@@ -86,7 +102,15 @@
 			}
 		}
 	},
-	"north-west": {},
+	"north-west": {
+		"slots": {
+			"game/Player_Idle1": {
+				"attachment": [
+					{ "name": "game/Player_Idle3" }
+				]
+			}
+		}
+	},
 	"pit-death": {
 		"slots": {
 			"game/Player_Idle1": {
@@ -115,24 +139,8 @@
 		}
 	},
 	"south": {},
-	"south-east": {
-		"slots": {
-			"game/Player_Idle1": {
-				"attachment": [
-					{ "name": "game/Player_Idle9" }
-				]
-			}
-		}
-	},
-	"south-west": {
-		"slots": {
-			"game/Player_Idle1": {
-				"attachment": [
-					{ "name": "game/Player_Idle7" }
-				]
-			}
-		}
-	},
+	"south-east": {},
+	"south-west": {},
 	"stand": {},
 	"west": {
 		"slots": {

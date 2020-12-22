@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -42,6 +43,7 @@ public class GameScreen extends JamScreen {
     public static Viewport innerViewport;
     public static final int WORLD_WIDTH = 1024;
     public static final int WORLD_HEIGHT = 576;
+    public static RandomXS128 random = new RandomXS128();
     
     @Override
     public void show() {
@@ -107,6 +109,8 @@ public class GameScreen extends JamScreen {
         
         var reader = new OgmoReader();
         reader.addListener(new OgmoAdapter() {
+            int ordinal;
+            
             @Override
             public void entity(String name, int id, int x, int y, int width, int height, boolean flippedX,
                                boolean flippedY, int originX, int originY, int rotation, Array<EntityNode> nodes,
@@ -129,6 +133,13 @@ public class GameScreen extends JamScreen {
                         pit.setPosition(x, y);
                         entityController.add(pit);
                         pit.updateCollisionBox();
+                        break;
+                    case "enemy":
+                        var enemy = new EnemyEntity(ordinal);
+                        ordinal++;
+                        enemy.setPosition(x, y);
+                        entityController.add(enemy);
+                        enemy.updateCollisionBox();
                         break;
                 }
             }

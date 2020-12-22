@@ -10,6 +10,7 @@ import com.ray3k.template.JamScreen;
 import com.ray3k.template.entities.*;
 
 import static com.ray3k.template.Core.*;
+import static com.ray3k.template.entities.EnemyEntity.*;
 import static com.ray3k.template.entities.PlayerEntity.*;
 
 public class DialogPause extends Dialog {
@@ -213,6 +214,75 @@ public class DialogPause extends Dialog {
                 var slider = (Slider) actor;
                 JUMP_FRICTION = slider.getValue();
                 jumpFrictionLabel.setText(Float.toString(slider.getValue()));
+            }
+        });
+    
+        root.row();
+        table = new Table();
+        root.add(table);
+    
+        table.defaults().space(10);
+        label = new Label("Enemy Speed", skin);
+        table.add(label);
+    
+        slider = new Slider(0, 2000, 1, false, skin);
+        slider.setValue(ENEMY_SPEED);
+        table.add(slider).minWidth(500);
+    
+        var enemySpeedLabel = new Label(Float.toString(ENEMY_SPEED), skin);
+        table.add(enemySpeedLabel).minWidth(200);
+        slider.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                var slider = (Slider) actor;
+                ENEMY_SPEED = slider.getValue();
+                enemySpeedLabel.setText(Float.toString(slider.getValue()));
+            }
+        });
+    
+        root.row();
+        table = new Table();
+        root.add(table);
+    
+        table.defaults().space(10);
+        label = new Label("Player Hurt Speed", skin);
+        table.add(label);
+    
+        slider = new Slider(0, 2000, 1, false, skin);
+        slider.setValue(HURT_SPEED);
+        table.add(slider).minWidth(500);
+    
+        var playerHurtSpeedLabel = new Label(Float.toString(HURT_SPEED), skin);
+        table.add(playerHurtSpeedLabel).minWidth(200);
+        slider.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                var slider = (Slider) actor;
+                HURT_SPEED = slider.getValue();
+                playerHurtSpeedLabel.setText(Float.toString(slider.getValue()));
+            }
+        });
+    
+        root.row();
+        table = new Table();
+        root.add(table);
+    
+        table.defaults().space(10);
+        label = new Label("Player Hurt Friction", skin);
+        table.add(label);
+    
+        slider = new Slider(0, 2000, 1, false, skin);
+        slider.setValue(HURT_FRICTION);
+        table.add(slider).minWidth(500);
+    
+        var playerHurtFrictionLabel = new Label(Float.toString(HURT_FRICTION), skin);
+        table.add(playerHurtFrictionLabel).minWidth(200);
+        slider.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                var slider = (Slider) actor;
+                HURT_FRICTION = slider.getValue();
+                playerHurtFrictionLabel.setText(Float.toString(slider.getValue()));
             }
         });
     }

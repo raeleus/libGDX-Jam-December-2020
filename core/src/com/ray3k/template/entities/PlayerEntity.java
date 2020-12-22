@@ -2,6 +2,7 @@ package com.ray3k.template.entities;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Response;
 import com.esotericsoftware.spine.AnimationState.AnimationStateAdapter;
@@ -20,12 +21,16 @@ public class PlayerEntity extends Entity {
     public static float SLIDE_FRICTION = 1400;
     public static float JUMP_SPEED = 550;
     public static float JUMP_FRICTION = 1100;
-    private boolean sliding;
-    private boolean jumping;
+    public static float HURT_SPEED = 600;
+    public static float HURT_FRICTION = 1400;
+    private static enum Mode {
+        SLIDING, JUMPING, HURTING, PIT_FALLING, NORMAL
+    }
+    private Mode mode = Mode.NORMAL;
     private float friction;
-    private boolean pitFalling;
     private float pitRespawnX;
     private float pitRespawnY;
+    public static final Vector2 temp = new Vector2();
     
     @Override
     public void create() {
@@ -33,9 +38,9 @@ public class PlayerEntity extends Entity {
         animationState.setAnimation(0, Resources.PlayerAnimation.stand, true);
         skeletonBounds.update(skeleton, true);
         setCollisionBox(skeletonBounds, (item, other) -> {
-            if (other.userData instanceof WallEntity) {
+            if (other.userData instanceof WallEntity ) {
                 return Response.slide;
-            } else if (other.userData instanceof  PitEntity) {
+            } else if (other.userData instanceof PitEntity || other.userData instanceof EnemyEntity) {
                 return Response.cross;
             }
             return null;
@@ -46,7 +51,7 @@ public class PlayerEntity extends Entity {
                 if (entry.getAnimation() == pitDeath) {
                     setPosition(pitRespawnX, pitRespawnY);
                     animationState.setAnimation(0, stand, true);
-                    pitFalling = false;
+                    mode = Mode.NORMAL;
                 }
             }
         });
@@ -54,7 +59,7 @@ public class PlayerEntity extends Entity {
     
     @Override
     public void actBefore(float delta) {
-        if (!pitFalling && !sliding && !jumping) {
+        if (mode != Mode.JUMPING && mode != Mode.PIT_FALLING) {
             pitRespawnX = x;
             pitRespawnY = y;
         }
@@ -62,7 +67,7 @@ public class PlayerEntity extends Entity {
     
     @Override
     public void act(float delta) {
-        if (!pitFalling && !sliding && !jumping) {
+        if (mode == Mode.NORMAL) {
             float direction;
             float speed = gameScreen.isBindingPressed(SPRINT) ? SPRINT_SPEED : MOVE_SPEED;
             if (gameScreen.areAllBindingsPressed(UP, RIGHT)) {
@@ -98,33 +103,42 @@ public class PlayerEntity extends Entity {
             if (gameScreen.isBindingJustPressed(SLIDE) && gameScreen.isAnyBindingPressed(UP, DOWN, LEFT, RIGHT)) {
                 speed = SLIDE_SPEED;
                 friction = SLIDE_FRICTION;
-                sliding = true;
+                mode = Mode.SLIDING;
                 animationState.setAnimation(0, slide, true);
             }
     
             if (gameScreen.isBindingJustPressed(JUMP) && gameScreen.isAnyBindingPressed(UP, DOWN, LEFT, RIGHT)) {
                 speed = JUMP_SPEED;
                 friction = JUMP_FRICTION;
-                jumping = true;
+                mode = Mode.JUMPING;
                 animationState.setAnimation(0, jump, false);
             }
     
             setMotion(speed, direction);
         }
         
-        if (sliding) {
+        if (mode == Mode.SLIDING) {
             setSpeed(Utils.approach(getSpeed(), 0, friction * delta));
             if (MathUtils.isZero(getSpeed())) {
-                sliding = false;
+                mode = Mode.NORMAL;
                 animationState.setAnimation(0, stand, true);
             }
         }
     
-        if (jumping) {
+        if (mode == Mode.JUMPING) {
             setSpeed(Utils.approach(getSpeed(), 0, friction * delta));
             animationState.getCurrent(0).setTrackTime((JUMP_SPEED - getSpeed()) / JUMP_SPEED);
             if (MathUtils.isZero(getSpeed())) {
-                jumping = false;
+                mode = Mode.NORMAL;
+                animationState.addAnimation(0, stand, true, 0);
+            }
+        }
+    
+        if (mode == Mode.HURTING) {
+            setSpeed(Utils.approach(getSpeed(), 0, friction * delta));
+            animationState.getCurrent(0).setTrackTime((JUMP_SPEED - getSpeed()) / JUMP_SPEED);
+            if (MathUtils.isZero(getSpeed())) {
+                mode = Mode.NORMAL;
                 animationState.addAnimation(0, stand, true, 0);
             }
         }
@@ -148,14 +162,20 @@ public class PlayerEntity extends Entity {
     public void collision(Collisions collisions) {
         for (int i = 0; i < collisions.size(); i++) {
             var collision = collisions.get(i);
-            if (!jumping && !pitFalling && collision.other.userData instanceof PitEntity) {
+            if (mode != Mode.JUMPING && mode != Mode.PIT_FALLING && collision.other.userData instanceof PitEntity) {
                 if (getCollisionBoxCenterX() > collision.otherRect.x && getCollisionBoxCenterX() < collision.otherRect.x + collision.otherRect.w && getCollisionBoxCenterY() > collision.otherRect.y && getCollisionBoxCenterY() < collision.otherRect.y + collision.otherRect.h) {
-                    sliding = false;
-                    jumping = false;
-                    pitFalling = true;
+                    mode = Mode.PIT_FALLING;
                     animationState.setAnimation(0, pitDeath, false);
                     setSpeed(0);
                 }
+            }
+            
+            if (mode == Mode.NORMAL && collision.other.userData instanceof EnemyEntity) {
+                temp.set(collision.normal.x, collision.normal.y);
+                setMotion(HURT_SPEED, temp.angleDeg());
+                mode = Mode.HURTING;
+                friction = HURT_FRICTION;
+                animationState.setAnimation(0, hurt, false);
             }
         }
     }
