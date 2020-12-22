@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "j6RyTmZOgXuEULVO+kWgpGvidkA",
+	"hash": "Ty6DhgibD7pZ2st0mieRTweJ348",
 	"spine": "3.8.99",
 	"x": -12,
 	"y": 0.35,
@@ -93,6 +93,14 @@
 				"color": [
 					{ "color": "ffffffff" },
 					{ "time": 1, "color": "000000ff" }
+				]
+			}
+		},
+		"bones": {
+			"bone": {
+				"scale": [
+					{},
+					{ "time": 1, "x": 0, "y": 0 }
 				]
 			}
 		}

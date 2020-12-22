@@ -54,7 +54,10 @@ public class PlayerEntity extends Entity {
     
     @Override
     public void actBefore(float delta) {
-    
+        if (!pitFalling && !sliding && !jumping) {
+            pitRespawnX = x;
+            pitRespawnY = y;
+        }
     }
     
     @Override
@@ -120,7 +123,6 @@ public class PlayerEntity extends Entity {
         if (jumping) {
             setSpeed(Utils.approach(getSpeed(), 0, friction * delta));
             animationState.getCurrent(0).setTrackTime((JUMP_SPEED - getSpeed()) / JUMP_SPEED);
-            System.out.println(animationState.getCurrent(0).getTrackTime());
             if (MathUtils.isZero(getSpeed())) {
                 jumping = false;
                 animationState.addAnimation(0, stand, true, 0);
@@ -146,14 +148,13 @@ public class PlayerEntity extends Entity {
     public void collision(Collisions collisions) {
         for (int i = 0; i < collisions.size(); i++) {
             var collision = collisions.get(i);
-            if (!pitFalling && collision.other.userData instanceof PitEntity) {
-                if (x > collision.otherRect.x && x < collision.otherRect.x + collision.otherRect.w && y > collision.otherRect.y && y < collision.otherRect.y + collision.otherRect.h) {
+            if (!jumping && !pitFalling && collision.other.userData instanceof PitEntity) {
+                if (getCollisionBoxCenterX() > collision.otherRect.x && getCollisionBoxCenterX() < collision.otherRect.x + collision.otherRect.w && getCollisionBoxCenterY() > collision.otherRect.y && getCollisionBoxCenterY() < collision.otherRect.y + collision.otherRect.h) {
                     sliding = false;
+                    jumping = false;
                     pitFalling = true;
                     animationState.setAnimation(0, pitDeath, false);
                     setSpeed(0);
-                    pitRespawnX = collision.touch.x;
-                    pitRespawnY = collision.touch.y;
                 }
             }
         }
