@@ -1,6 +1,7 @@
 package com.ray3k.template.entities;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Response;
 import com.esotericsoftware.spine.AnimationState.AnimationStateAdapter;
@@ -15,6 +16,10 @@ import static com.ray3k.template.screens.GameScreen.*;
 public class PlayerEntity extends Entity {
     public static float SPRINT_SPEED = 300;
     public static float MOVE_SPEED = 200;
+    public static float SLIDE_SPEED = 600;
+    public static float SLIDE_FRICTION = 400;
+    private boolean sliding;
+    private float friction;
     private boolean pitFalling;
     private float pitRespawnX;
     private float pitRespawnY;
@@ -51,7 +56,7 @@ public class PlayerEntity extends Entity {
     
     @Override
     public void act(float delta) {
-        if (!pitFalling) {
+        if (!pitFalling && !sliding) {
             float direction;
             float speed = gameScreen.isBindingPressed(SPRINT) ? SPRINT_SPEED : MOVE_SPEED;
             if (gameScreen.areAllBindingsPressed(UP, RIGHT)) {
@@ -83,10 +88,26 @@ public class PlayerEntity extends Entity {
                 direction = 0;
                 speed = 0;
             }
+            
+            if (gameScreen.isBindingJustPressed(SLIDE) && gameScreen.isAnyBindingPressed(UP, DOWN, LEFT, RIGHT)) {
+                speed = SLIDE_SPEED;
+                friction = SLIDE_FRICTION;
+                sliding = true;
+                animationState.setAnimation(0, slide, true);
+            }
     
             setMotion(speed, direction);
-            gameScreen.camera.position.set(x, y, 0);
         }
+        
+        if (sliding) {
+            setSpeed(Utils.approach(getSpeed(), 0, friction * delta));
+            if (MathUtils.isZero(getSpeed())) {
+                sliding = false;
+                animationState.setAnimation(0, stand, true);
+            }
+        }
+    
+        gameScreen.camera.position.set(x, y, 0);
     }
     
     @Override
@@ -107,6 +128,7 @@ public class PlayerEntity extends Entity {
             var collision = collisions.get(i);
             if (!pitFalling && collision.other.userData instanceof PitEntity) {
                 if (x > collision.otherRect.x && x < collision.otherRect.x + collision.otherRect.w && y > collision.otherRect.y && y < collision.otherRect.y + collision.otherRect.h) {
+                    sliding = false;
                     pitFalling = true;
                     animationState.setAnimation(0, pitDeath, false);
                     setSpeed(0);

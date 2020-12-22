@@ -36,7 +36,7 @@ public class Core extends JamGame {
     public static CollisionFilter defaultCollisionFilter;
     public static CrossPlatformWorker crossPlatformWorker;
     public enum Binding {
-        LEFT, RIGHT, UP, DOWN, SPRINT, SPECIAL, SHIELD;
+        LEFT, RIGHT, UP, DOWN, SPRINT, SPECIAL, SLIDE;
     }
     public static float bgm;
     public static float sfx;
@@ -124,7 +124,7 @@ public class Core extends JamGame {
         JamScreen.addKeyBinding(Binding.UP, Input.Keys.W);
         JamScreen.addKeyBinding(Binding.DOWN, Input.Keys.S);
         JamScreen.addKeyBinding(Binding.SPRINT, Keys.SHIFT_LEFT);
-        JamScreen.addKeyBinding(Binding.SHIELD, Input.Keys.X);
+        JamScreen.addKeyBinding(Binding.SLIDE, Keys.CONTROL_LEFT);
         JamScreen.addKeyBinding(Binding.SPECIAL, Input.Keys.C);
     }
 }

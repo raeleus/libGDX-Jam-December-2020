@@ -123,6 +123,52 @@ public class DialogPause extends Dialog {
                 sprintSpeedLabel.setText(Float.toString(slider.getValue()));
             }
         });
+    
+        root.row();
+        table = new Table();
+        root.add(table);
+    
+        table.defaults().space(10);
+        label = new Label("Player Slide Speed", skin);
+        table.add(label);
+    
+        slider = new Slider(0, 2000, 1, false, skin);
+        slider.setValue(SLIDE_SPEED);
+        table.add(slider).minWidth(500);
+    
+        var slideSpeedLabel = new Label(Float.toString(SLIDE_SPEED), skin);
+        table.add(slideSpeedLabel).minWidth(200);
+        slider.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                var slider = (Slider) actor;
+                SLIDE_SPEED = slider.getValue();
+                slideSpeedLabel.setText(Float.toString(slider.getValue()));
+            }
+        });
+    
+        root.row();
+        table = new Table();
+        root.add(table);
+    
+        table.defaults().space(10);
+        label = new Label("Player Slide Friction", skin);
+        table.add(label);
+    
+        slider = new Slider(0, 2000, 1, false, skin);
+        slider.setValue(SLIDE_FRICTION);
+        table.add(slider).minWidth(500);
+    
+        var slideFrictionLabel = new Label(Float.toString(SLIDE_FRICTION), skin);
+        table.add(slideFrictionLabel).minWidth(200);
+        slider.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                var slider = (Slider) actor;
+                SLIDE_FRICTION = slider.getValue();
+                slideFrictionLabel.setText(Float.toString(slider.getValue()));
+            }
+        });
     }
     
     @Override
