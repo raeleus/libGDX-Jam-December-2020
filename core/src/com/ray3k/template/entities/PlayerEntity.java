@@ -17,8 +17,11 @@ public class PlayerEntity extends Entity {
     public static float SPRINT_SPEED = 300;
     public static float MOVE_SPEED = 200;
     public static float SLIDE_SPEED = 600;
-    public static float SLIDE_FRICTION = 400;
+    public static float SLIDE_FRICTION = 1400;
+    public static float JUMP_SPEED = 550;
+    public static float JUMP_FRICTION = 1100;
     private boolean sliding;
+    private boolean jumping;
     private float friction;
     private boolean pitFalling;
     private float pitRespawnX;
@@ -56,7 +59,7 @@ public class PlayerEntity extends Entity {
     
     @Override
     public void act(float delta) {
-        if (!pitFalling && !sliding) {
+        if (!pitFalling && !sliding && !jumping) {
             float direction;
             float speed = gameScreen.isBindingPressed(SPRINT) ? SPRINT_SPEED : MOVE_SPEED;
             if (gameScreen.areAllBindingsPressed(UP, RIGHT)) {
@@ -96,6 +99,13 @@ public class PlayerEntity extends Entity {
                 animationState.setAnimation(0, slide, true);
             }
     
+            if (gameScreen.isBindingJustPressed(JUMP) && gameScreen.isAnyBindingPressed(UP, DOWN, LEFT, RIGHT)) {
+                speed = JUMP_SPEED;
+                friction = JUMP_FRICTION;
+                jumping = true;
+                animationState.setAnimation(0, jump, false);
+            }
+    
             setMotion(speed, direction);
         }
         
@@ -104,6 +114,16 @@ public class PlayerEntity extends Entity {
             if (MathUtils.isZero(getSpeed())) {
                 sliding = false;
                 animationState.setAnimation(0, stand, true);
+            }
+        }
+    
+        if (jumping) {
+            setSpeed(Utils.approach(getSpeed(), 0, friction * delta));
+            animationState.getCurrent(0).setTrackTime((JUMP_SPEED - getSpeed()) / JUMP_SPEED);
+            System.out.println(animationState.getCurrent(0).getTrackTime());
+            if (MathUtils.isZero(getSpeed())) {
+                jumping = false;
+                animationState.addAnimation(0, stand, true, 0);
             }
         }
     

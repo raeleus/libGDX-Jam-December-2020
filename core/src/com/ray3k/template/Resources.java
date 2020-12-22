@@ -65,6 +65,7 @@ public class Resources {
         spine_player = assetManager.get("spine/player.json");
         spine_playerAnimationData = assetManager.get("spine/player.json-animation");
         PlayerAnimation.east = spine_player.findAnimation("east");
+        PlayerAnimation.jump = spine_player.findAnimation("jump");
         PlayerAnimation.north = spine_player.findAnimation("north");
         PlayerAnimation.northEast = spine_player.findAnimation("north-east");
         PlayerAnimation.northWest = spine_player.findAnimation("north-west");
@@ -109,6 +110,8 @@ public class Resources {
 
     public static class PlayerAnimation {
         public static Animation east;
+
+        public static Animation jump;
 
         public static Animation north;
 

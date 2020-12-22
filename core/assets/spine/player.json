@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "IIddLYI45iKYDYVre4fjSY0ljK0",
+	"hash": "j6RyTmZOgXuEULVO+kWgpGvidkA",
 	"spine": "3.8.99",
 	"x": -12,
 	"y": 0.35,
@@ -48,6 +48,22 @@
 			"game/Player_Idle1": {
 				"attachment": [
 					{ "name": "game/Player_Idle2" }
+				]
+			}
+		}
+	},
+	"jump": {
+		"bones": {
+			"bone": {
+				"translate": [
+					{},
+					{ "time": 0.5, "y": 9.56 },
+					{ "time": 1 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.5, "x": 1.506, "y": 1.506 },
+					{ "time": 1 }
 				]
 			}
 		}

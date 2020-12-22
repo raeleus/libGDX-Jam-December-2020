@@ -169,6 +169,52 @@ public class DialogPause extends Dialog {
                 slideFrictionLabel.setText(Float.toString(slider.getValue()));
             }
         });
+    
+        root.row();
+        table = new Table();
+        root.add(table);
+    
+        table.defaults().space(10);
+        label = new Label("Player Jump Speed", skin);
+        table.add(label);
+    
+        slider = new Slider(0, 2000, 1, false, skin);
+        slider.setValue(JUMP_SPEED);
+        table.add(slider).minWidth(500);
+    
+        var jumpSpeedLabel = new Label(Float.toString(JUMP_SPEED), skin);
+        table.add(jumpSpeedLabel).minWidth(200);
+        slider.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                var slider = (Slider) actor;
+                JUMP_SPEED = slider.getValue();
+                jumpSpeedLabel.setText(Float.toString(slider.getValue()));
+            }
+        });
+    
+        root.row();
+        table = new Table();
+        root.add(table);
+    
+        table.defaults().space(10);
+        label = new Label("Player Jump Friction", skin);
+        table.add(label);
+    
+        slider = new Slider(0, 2000, 1, false, skin);
+        slider.setValue(JUMP_FRICTION);
+        table.add(slider).minWidth(500);
+    
+        var jumpFrictionLabel = new Label(Float.toString(JUMP_FRICTION), skin);
+        table.add(jumpFrictionLabel).minWidth(200);
+        slider.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                var slider = (Slider) actor;
+                JUMP_FRICTION = slider.getValue();
+                jumpFrictionLabel.setText(Float.toString(slider.getValue()));
+            }
+        });
     }
     
     @Override
