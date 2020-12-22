@@ -68,6 +68,7 @@ public class Resources {
         PlayerAnimation.north = spine_player.findAnimation("north");
         PlayerAnimation.northEast = spine_player.findAnimation("north-east");
         PlayerAnimation.northWest = spine_player.findAnimation("north-west");
+        PlayerAnimation.pitDeath = spine_player.findAnimation("pit-death");
         PlayerAnimation.south = spine_player.findAnimation("south");
         PlayerAnimation.southEast = spine_player.findAnimation("south-east");
         PlayerAnimation.southWest = spine_player.findAnimation("south-west");
@@ -113,6 +114,8 @@ public class Resources {
         public static Animation northEast;
 
         public static Animation northWest;
+
+        public static Animation pitDeath;
 
         public static Animation south;
 

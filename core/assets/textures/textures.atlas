@@ -6,70 +6,70 @@ filter: Nearest,Nearest
 repeat: none
 game/Player_Idle1
   rotate: true
-  xy: 1, 607
-  size: 24, 42
+  xy: 221, 1
+  size: 24, 39
   orig: 24, 42
-  offset: 0, 0
+  offset: 0, 1
   index: -1
 game/Player_Idle2
   rotate: true
-  xy: 45, 607
-  size: 24, 42
+  xy: 243, 611
+  size: 20, 39
   orig: 24, 42
-  offset: 0, 0
+  offset: 1, 1
   index: -1
 game/Player_Idle3
   rotate: true
-  xy: 89, 607
-  size: 24, 42
+  xy: 243, 633
+  size: 24, 39
   orig: 24, 42
-  offset: 0, 0
+  offset: 0, 1
   index: -1
 game/Player_Idle4
   rotate: true
-  xy: 133, 607
-  size: 24, 42
+  xy: 243, 589
+  size: 20, 39
   orig: 24, 42
-  offset: 0, 0
+  offset: 3, 1
   index: -1
 game/Player_Idle5
   rotate: true
-  xy: 177, 607
+  xy: 1, 1
   size: 24, 42
   orig: 24, 42
   offset: 0, 0
   index: -1
 game/Player_Idle6
   rotate: true
-  xy: 221, 607
+  xy: 45, 1
   size: 24, 42
   orig: 24, 42
   offset: 0, 0
   index: -1
 game/Player_Idle7
   rotate: true
-  xy: 265, 607
+  xy: 89, 1
   size: 24, 42
   orig: 24, 42
   offset: 0, 0
   index: -1
 game/Player_Idle8
   rotate: true
-  xy: 309, 607
+  xy: 133, 1
   size: 24, 42
   orig: 24, 42
   offset: 0, 0
   index: -1
 game/Player_Idle9
   rotate: true
-  xy: 353, 607
+  xy: 177, 1
   size: 24, 42
   orig: 24, 42
   offset: 0, 0
   index: -1
 game/Template_Map_1
-  rotate: true
-  xy: 1, 365
+  rotate: false
+  xy: 1, 27
   size: 240, 630
   orig: 240, 630
   offset: 0, 0

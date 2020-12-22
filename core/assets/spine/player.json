@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "MbpYEqdW6iT8gB7eUHgrpRtnKQg",
+	"hash": "ncL17Qbu4KR43nX5DiBRJDSfB8g",
 	"spine": "3.8.99",
 	"x": -12,
 	"y": 0.35,
@@ -14,7 +14,7 @@
 	{ "name": "bone", "parent": "root", "length": 45.9 }
 ],
 "slots": [
-	{ "name": "game/Player_Idle1", "bone": "bone", "attachment": "game/Player_Idle5" },
+	{ "name": "game/Player_Idle1", "bone": "bone", "attachment": "game/Player_Idle1" },
 	{ "name": "bbox", "bone": "root", "attachment": "bbox" }
 ],
 "skins": [
@@ -25,7 +25,7 @@
 				"bbox": {
 					"type": "boundingbox",
 					"vertexCount": 4,
-					"vertices": [ -10.63, 0.73, -10.83, 41.37, 11.09, 41.38, 11.05, 0.59 ]
+					"vertices": [ -8.1, 2.2, -7.77, 13.17, 8.03, 13.18, 7.99, 2.18 ]
 				}
 			},
 			"game/Player_Idle1": {
@@ -47,7 +47,7 @@
 		"slots": {
 			"game/Player_Idle1": {
 				"attachment": [
-					{ "name": "game/Player_Idle6" }
+					{ "name": "game/Player_Idle2" }
 				]
 			}
 		}
@@ -56,7 +56,7 @@
 		"slots": {
 			"game/Player_Idle1": {
 				"attachment": [
-					{ "name": "game/Player_Idle2" }
+					{ "name": "game/Player_Idle3" }
 				]
 			}
 		}
@@ -70,24 +70,18 @@
 			}
 		}
 	},
-	"north-west": {
+	"north-west": {},
+	"pit-death": {
 		"slots": {
 			"game/Player_Idle1": {
-				"attachment": [
-					{ "name": "game/Player_Idle1" }
+				"color": [
+					{ "color": "ffffffff" },
+					{ "time": 1, "color": "000000ff" }
 				]
 			}
 		}
 	},
-	"south": {
-		"slots": {
-			"game/Player_Idle1": {
-				"attachment": [
-					{ "name": "game/Player_Idle8" }
-				]
-			}
-		}
-	},
+	"south": {},
 	"south-east": {
 		"slots": {
 			"game/Player_Idle1": {
