@@ -1,5 +1,7 @@
 package com.ray3k.template.entities;
 
+import com.badlogic.gdx.graphics.Color;
+import com.dongbat.jbump.CollisionFilter;
 import com.dongbat.jbump.Collisions;
 import com.ray3k.template.*;
 
@@ -15,6 +17,8 @@ public class PlayerEntity extends Entity {
     public void create() {
         setSkeletonData(spine_player, spine_playerAnimationData);
         animationState.setAnimation(0, Resources.PlayerAnimation.stand, true);
+        skeletonBounds.update(skeleton, true);
+        setCollisionBox(skeletonBounds, CollisionFilter.defaultFilter);
     }
     
     @Override
@@ -25,7 +29,7 @@ public class PlayerEntity extends Entity {
     @Override
     public void act(float delta) {
         float direction;
-        float speed = SPRINT_SPEED;
+        float speed = MOVE_SPEED;
         if (gameScreen.areAllBindingsPressed(UP, RIGHT)) {
             animationState.setAnimation(0, PlayerAnimation.northEast, true);
             direction = 45;
@@ -62,7 +66,8 @@ public class PlayerEntity extends Entity {
     
     @Override
     public void draw(float delta) {
-    
+        shapeDrawer.setColor(Color.BLUE);
+        shapeDrawer.filledRectangle(x + bboxX, y + bboxY, bboxWidth, bboxHeight);
     }
     
     @Override

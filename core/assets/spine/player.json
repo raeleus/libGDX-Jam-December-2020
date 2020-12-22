@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "xTagwdo2ng0OfiMa49zm8IrgDDo",
+	"hash": "MbpYEqdW6iT8gB7eUHgrpRtnKQg",
 	"spine": "3.8.99",
 	"x": -12,
 	"y": 0.35,
@@ -25,7 +25,7 @@
 				"bbox": {
 					"type": "boundingbox",
 					"vertexCount": 4,
-					"vertices": [ -11.97, -0.04, -11.98, 42.33, 12.05, 42.34, 12.01, 0.01 ]
+					"vertices": [ -10.63, 0.73, -10.83, 41.37, 11.09, 41.38, 11.05, 0.59 ]
 				}
 			},
 			"game/Player_Idle1": {
