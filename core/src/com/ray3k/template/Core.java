@@ -119,10 +119,10 @@ public class Core extends JamGame {
     }
     
     public void setDefaultBindings() {
-        JamScreen.addKeyBinding(Binding.LEFT, Input.Keys.LEFT);
-        JamScreen.addKeyBinding(Binding.RIGHT, Input.Keys.RIGHT);
-        JamScreen.addKeyBinding(Binding.UP, Input.Keys.UP);
-        JamScreen.addKeyBinding(Binding.DOWN, Input.Keys.DOWN);
+        JamScreen.addKeyBinding(Binding.LEFT, Input.Keys.A);
+        JamScreen.addKeyBinding(Binding.RIGHT, Input.Keys.D);
+        JamScreen.addKeyBinding(Binding.UP, Input.Keys.W);
+        JamScreen.addKeyBinding(Binding.DOWN, Input.Keys.S);
         JamScreen.addKeyBinding(Binding.SPRINT, Keys.SHIFT_LEFT);
         JamScreen.addKeyBinding(Binding.SHIELD, Input.Keys.X);
         JamScreen.addKeyBinding(Binding.SPECIAL, Input.Keys.C);
