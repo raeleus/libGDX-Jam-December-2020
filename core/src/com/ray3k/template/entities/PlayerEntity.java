@@ -10,8 +10,8 @@ import static com.ray3k.template.Resources.*;
 import static com.ray3k.template.screens.GameScreen.*;
 
 public class PlayerEntity extends Entity {
-    private final float SPRINT_SPEED = 500;
-    private final float MOVE_SPEED = 250;
+    public static float SPRINT_SPEED = 500;
+    public static float MOVE_SPEED = 250;
     
     @Override
     public void create() {

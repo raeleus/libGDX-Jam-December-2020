@@ -7,8 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.ray3k.template.Core;
 import com.ray3k.template.JamScreen;
+import com.ray3k.template.entities.*;
 
 import static com.ray3k.template.Core.*;
+import static com.ray3k.template.entities.PlayerEntity.*;
 
 public class DialogPause extends Dialog {
     private JamScreen jamScreen;
@@ -73,6 +75,29 @@ public class DialogPause extends Dialog {
                 } else {
                     return super.keyDown(event, keycode);
                 }
+            }
+        });
+        
+        root.row();
+        table = new Table();
+        root.add(table);
+        
+        table.defaults().space(10);
+        label = new Label("Player Move Speed", skin);
+        table.add(label);
+        
+        var slider = new Slider(0, 2000, 1, false, skin);
+        slider.setValue(MOVE_SPEED);
+        table.add(slider).minWidth(500);
+        
+        var moveSpeedLabel = new Label(Float.toString(MOVE_SPEED), skin);
+        table.add(moveSpeedLabel).minWidth(200);
+        slider.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                var slider = (Slider) actor;
+                MOVE_SPEED = slider.getValue();
+                moveSpeedLabel.setText(Float.toString(slider.getValue()));
             }
         });
     }
