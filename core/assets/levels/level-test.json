@@ -33,12 +33,13 @@
         {"name": "wall", "id": 10, "_eid": "55890852", "x": 0, "y": 588, "width": 24, "height": 588, "originX": 0, "originY": 588},
         {"name": "wall", "id": 11, "_eid": "55890852", "x": 24, "y": 42, "width": 216, "height": 42, "originX": 0, "originY": 42},
         {"name": "wall", "id": 12, "_eid": "55890852", "x": 216, "y": 588, "width": 24, "height": 546, "originX": 0, "originY": 546},
-        {"name": "pit", "id": 13, "_eid": "55943121", "x": 24, "y": 420, "width": 192, "height": 42, "originX": 0, "originY": 42},
-        {"name": "pit", "id": 14, "_eid": "55943121", "x": 24, "y": 378, "width": 96, "height": 84, "originX": 0, "originY": 84},
-        {"name": "pit", "id": 15, "_eid": "55943121", "x": 120, "y": 336, "width": 96, "height": 126, "originX": 0, "originY": 126},
-        {"name": "pit", "id": 16, "_eid": "55943121", "x": 24, "y": 252, "width": 96, "height": 42, "originX": 0, "originY": 42},
+        {"name": "pit", "id": 13, "_eid": "55943121", "x": 0, "y": 420, "width": 240, "height": 42, "originX": 0, "originY": 42},
+        {"name": "pit", "id": 14, "_eid": "55943121", "x": 0, "y": 378, "width": 120, "height": 84, "originX": 0, "originY": 84},
+        {"name": "pit", "id": 15, "_eid": "55943121", "x": 120, "y": 336, "width": 120, "height": 84, "originX": 0, "originY": 84},
+        {"name": "pit", "id": 16, "_eid": "55943121", "x": 0, "y": 252, "width": 240, "height": 42, "originX": 0, "originY": 42},
         {"name": "player", "id": 17, "_eid": "56023188", "x": 36, "y": 588, "originX": 12, "originY": 42},
-        {"name": "enemy", "id": 18, "_eid": "61803422", "x": 180, "y": 504, "originX": 12, "originY": 42}
+        {"name": "enemy", "id": 18, "_eid": "61803422", "x": 180, "y": 504, "originX": 12, "originY": 42},
+        {"name": "pit", "id": 19, "_eid": "55943121", "x": 0, "y": 336, "width": 240, "height": 42, "originX": 0, "originY": 42}
       ]
     }
   ]
