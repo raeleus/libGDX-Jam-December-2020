@@ -69,7 +69,8 @@ public class PlayerEntity extends Entity {
     @Override
     public void draw(float delta) {
         shapeDrawer.setColor(Color.BLUE);
-        shapeDrawer.filledRectangle(x + bboxX, y + bboxY, bboxWidth, bboxHeight);
+        shapeDrawer.setDefaultLineWidth(1);
+        shapeDrawer.rectangle(x + bboxX, y + bboxY, bboxWidth, bboxHeight);
     }
     
     @Override
