@@ -100,6 +100,29 @@ public class DialogPause extends Dialog {
                 moveSpeedLabel.setText(Float.toString(slider.getValue()));
             }
         });
+    
+        root.row();
+        table = new Table();
+        root.add(table);
+    
+        table.defaults().space(10);
+        label = new Label("Player Sprint Speed", skin);
+        table.add(label);
+    
+        slider = new Slider(0, 2000, 1, false, skin);
+        slider.setValue(SPRINT_SPEED);
+        table.add(slider).minWidth(500);
+    
+        var sprintSpeedLabel = new Label(Float.toString(SPRINT_SPEED), skin);
+        table.add(sprintSpeedLabel).minWidth(200);
+        slider.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                var slider = (Slider) actor;
+                SPRINT_SPEED = slider.getValue();
+                sprintSpeedLabel.setText(Float.toString(slider.getValue()));
+            }
+        });
     }
     
     @Override

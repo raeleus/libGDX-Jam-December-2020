@@ -2,6 +2,7 @@ package com.ray3k.template;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.loaders.SkinLoader.SkinParameter;
 import com.badlogic.gdx.audio.Music;
@@ -35,7 +36,7 @@ public class Core extends JamGame {
     public static CollisionFilter defaultCollisionFilter;
     public static CrossPlatformWorker crossPlatformWorker;
     public enum Binding {
-        LEFT, RIGHT, UP, DOWN, SHOOT, SPECIAL, SHIELD;
+        LEFT, RIGHT, UP, DOWN, SPRINT, SPECIAL, SHIELD;
     }
     public static float bgm;
     public static float sfx;
@@ -122,7 +123,7 @@ public class Core extends JamGame {
         JamScreen.addKeyBinding(Binding.RIGHT, Input.Keys.RIGHT);
         JamScreen.addKeyBinding(Binding.UP, Input.Keys.UP);
         JamScreen.addKeyBinding(Binding.DOWN, Input.Keys.DOWN);
-        JamScreen.addKeyBinding(Binding.SHOOT, Input.Keys.Z);
+        JamScreen.addKeyBinding(Binding.SPRINT, Keys.SHIFT_LEFT);
         JamScreen.addKeyBinding(Binding.SHIELD, Input.Keys.X);
         JamScreen.addKeyBinding(Binding.SPECIAL, Input.Keys.C);
     }

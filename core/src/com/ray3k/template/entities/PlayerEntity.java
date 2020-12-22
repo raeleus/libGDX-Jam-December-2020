@@ -5,6 +5,8 @@ import com.dongbat.jbump.CollisionFilter;
 import com.dongbat.jbump.Collisions;
 import com.ray3k.template.*;
 
+import javax.script.Bindings;
+
 import static com.ray3k.template.Core.Binding.*;
 import static com.ray3k.template.Resources.*;
 import static com.ray3k.template.screens.GameScreen.*;
@@ -29,7 +31,7 @@ public class PlayerEntity extends Entity {
     @Override
     public void act(float delta) {
         float direction;
-        float speed = MOVE_SPEED;
+        float speed = gameScreen.isBindingPressed(SPRINT) ? SPRINT_SPEED : MOVE_SPEED;
         if (gameScreen.areAllBindingsPressed(UP, RIGHT)) {
             animationState.setAnimation(0, PlayerAnimation.northEast, true);
             direction = 45;
