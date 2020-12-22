@@ -116,13 +116,19 @@ public class GameScreen extends JamScreen {
                         var player = new PlayerEntity();
                         player.setPosition(x, y);
                         entityController.add(player);
+                        player.updateCollisionBox();
                         break;
                     case "wall":
                         var wall = new WallEntity(width, height);
                         wall.setPosition(x, y);
                         entityController.add(wall);
+                        wall.updateCollisionBox();
                         break;
                     case "pit":
+                        var pit = new PitEntity(width, height);
+                        pit.setPosition(x, y);
+                        entityController.add(pit);
+                        pit.updateCollisionBox();
                         break;
                 }
             }

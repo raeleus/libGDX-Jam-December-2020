@@ -1,11 +1,9 @@
 package com.ray3k.template.entities;
 
 import com.badlogic.gdx.graphics.Color;
-import com.dongbat.jbump.CollisionFilter;
 import com.dongbat.jbump.Collisions;
+import com.dongbat.jbump.Response;
 import com.ray3k.template.*;
-
-import javax.script.Bindings;
 
 import static com.ray3k.template.Core.Binding.*;
 import static com.ray3k.template.Resources.*;
@@ -20,7 +18,14 @@ public class PlayerEntity extends Entity {
         setSkeletonData(spine_player, spine_playerAnimationData);
         animationState.setAnimation(0, Resources.PlayerAnimation.stand, true);
         skeletonBounds.update(skeleton, true);
-        setCollisionBox(skeletonBounds, CollisionFilter.defaultFilter);
+        setCollisionBox(skeletonBounds, (item, other) -> {
+            if (other.userData instanceof WallEntity) {
+                return Response.slide;
+            } else if (other.userData instanceof  PitEntity) {
+                return Response.cross;
+            }
+            return null;
+        });
     }
     
     @Override
@@ -80,6 +85,11 @@ public class PlayerEntity extends Entity {
     
     @Override
     public void collision(Collisions collisions) {
-    
+        for (int i = 0; i < collisions.size(); i++) {
+            var collision = collisions.get(i);
+            if (collision.other.userData instanceof PitEntity) {
+                destroy = true;
+            }
+        }
     }
 }
