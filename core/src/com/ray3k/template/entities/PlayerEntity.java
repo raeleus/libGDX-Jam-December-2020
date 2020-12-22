@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.dongbat.jbump.Collisions;
+import com.dongbat.jbump.Rect;
 import com.dongbat.jbump.Response;
 import com.esotericsoftware.spine.AnimationState.AnimationStateAdapter;
 import com.esotericsoftware.spine.AnimationState.TrackEntry;
@@ -23,7 +24,7 @@ public class PlayerEntity extends Entity {
     public static float JUMP_FRICTION = 1100;
     public static float HURT_SPEED = 600;
     public static float HURT_FRICTION = 1400;
-    private static enum Mode {
+    private enum Mode {
         SLIDING, JUMPING, HURTING, PIT_FALLING, NORMAL
     }
     private Mode mode = Mode.NORMAL;
@@ -163,7 +164,11 @@ public class PlayerEntity extends Entity {
         for (int i = 0; i < collisions.size(); i++) {
             var collision = collisions.get(i);
             if (mode != Mode.JUMPING && mode != Mode.PIT_FALLING && collision.other.userData instanceof PitEntity) {
-                if (getCollisionBoxCenterX() > collision.otherRect.x && getCollisionBoxCenterX() < collision.otherRect.x + collision.otherRect.w && getCollisionBoxCenterY() > collision.otherRect.y && getCollisionBoxCenterY() < collision.otherRect.y + collision.otherRect.h) {
+                if (isInside(getCollisionBoxCenterX(), getCollisionBoxCenterY(), collision.otherRect) &&
+                        isInside(getCollisionBoxLeft(), getCollisionBoxCenterY(), collision.otherRect) &&
+                        isInside(getCollisionBoxRight(), getCollisionBoxCenterY(), collision.otherRect) &&
+                        isInside(getCollisionBoxCenterX(), getCollisionBoxTop(), collision.otherRect) &&
+                        isInside(getCollisionBoxCenterX(), getCollisionBoxBottom(), collision.otherRect)) {
                     mode = Mode.PIT_FALLING;
                     animationState.setAnimation(0, pitDeath, false);
                     setSpeed(0);
@@ -178,5 +183,9 @@ public class PlayerEntity extends Entity {
                 animationState.setAnimation(0, hurt, false);
             }
         }
+    }
+    
+    private boolean isInside(float x, float y, Rect rect) {
+        return x > rect.x && x < rect.x + rect.w && y > rect.y && y < rect.y + rect.h;
     }
 }
