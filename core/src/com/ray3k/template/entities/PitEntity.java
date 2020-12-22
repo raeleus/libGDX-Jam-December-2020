@@ -6,6 +6,7 @@ import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Item;
 import com.dongbat.jbump.Response;
 
+import static com.ray3k.template.Core.*;
 import static com.ray3k.template.screens.GameScreen.*;
 
 public class PitEntity extends Entity {
@@ -25,7 +26,7 @@ public class PitEntity extends Entity {
     
     @Override
     public void create() {
-    
+        depth = PROP_DEPTH;
     }
     
     @Override

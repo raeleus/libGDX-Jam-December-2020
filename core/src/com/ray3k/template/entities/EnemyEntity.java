@@ -8,6 +8,7 @@ import com.dongbat.jbump.Item;
 import com.dongbat.jbump.Response;
 import com.ray3k.template.screens.*;
 
+import static com.ray3k.template.Core.*;
 import static com.ray3k.template.Resources.EnemyAnimation.*;
 import static com.ray3k.template.Resources.*;
 import static com.ray3k.template.Resources.PlayerAnimation.*;
@@ -35,6 +36,8 @@ public class EnemyEntity extends Entity {
 
         random.setSeed(ordinal);
         setMotion(ENEMY_SPEED, random.nextFloat() * 360);
+    
+        depth = ENEMY_DEPTH;
     }
     
     @Override

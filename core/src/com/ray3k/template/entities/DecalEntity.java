@@ -13,7 +13,7 @@ public class DecalEntity extends Entity {
         sprite = new AtlasSprite(Resources.textures_textures.findRegion(regionName));
         sprite.setOriginCenter();
         sprite.setPosition(centerX - sprite.getWidth() / 2, centerY - sprite.getHeight() / 2);
-        
+        depth = BACKGROUND_DEPTH;
     }
     
     @Override

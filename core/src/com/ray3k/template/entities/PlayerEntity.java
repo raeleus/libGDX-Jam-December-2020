@@ -10,6 +10,7 @@ import com.esotericsoftware.spine.AnimationState.AnimationStateAdapter;
 import com.esotericsoftware.spine.AnimationState.TrackEntry;
 import com.ray3k.template.*;
 
+import static com.ray3k.template.Core.*;
 import static com.ray3k.template.Core.Binding.*;
 import static com.ray3k.template.Resources.*;
 import static com.ray3k.template.Resources.PlayerAnimation.*;
@@ -56,6 +57,7 @@ public class PlayerEntity extends Entity {
                 }
             }
         });
+        depth = PLAYER_DEPTH;
     }
     
     @Override
