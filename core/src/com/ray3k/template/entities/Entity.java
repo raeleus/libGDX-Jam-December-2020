@@ -173,6 +173,22 @@ public abstract class Entity {
         world.update(item, x + bboxX, y + bboxY);
     }
     
+    public float getCollisionBoxLeft() {
+        return x + bboxX;
+    }
+    
+    public float getCollisionBoxRight() {
+        return x + bboxX + bboxWidth;
+    }
+    
+    public float getCollisionBoxBottom() {
+        return y + bboxY;
+    }
+    
+    public float getCollisionBoxTop() {
+        return y + bboxY + bboxHeight;
+    }
+    
     public float getCollisionBoxCenterX() {
         return x + bboxX + bboxWidth / 2;
     }
