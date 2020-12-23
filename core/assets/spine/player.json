@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "w1QNgnCwISkEh6yBWJMNpHi62FA",
+	"hash": "mRNDmPVpEa8U3ZsrbghktimY5Bo",
 	"spine": "3.8.99",
 	"x": -12,
 	"y": 0.35,
@@ -143,7 +143,7 @@
 		"slots": {
 			"game/Player_Idle1": {
 				"attachment": [
-					{ "name": "game/Player_Idle3" }
+					{ "name": "game/Player_Idle2" }
 				]
 			}
 		}
