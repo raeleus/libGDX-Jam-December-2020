@@ -51,7 +51,7 @@ public class GameScreen extends JamScreen {
     
         gameScreen = this;
         vfxEffect = new GlitchEffect();
-        BG_COLOR.set(Color.PINK);
+        BG_COLOR.set(Color.valueOf("756e86"));
     
         paused = false;
     
@@ -178,11 +178,6 @@ public class GameScreen extends JamScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         innerViewport.apply();
         batch.setProjectionMatrix(camera.combined);
-        shapeDrawer.setColor(Color.GREEN);
-        shapeDrawer.filledRectangle(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
-        shapeDrawer.setColor(Color.BLUE);
-        shapeDrawer.setDefaultLineWidth(10);
-//        shapeDrawer.rectangle(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
         entityController.draw(paused ? 0 : delta);
         batch.end();
         vfxManager.endInputCapture();
