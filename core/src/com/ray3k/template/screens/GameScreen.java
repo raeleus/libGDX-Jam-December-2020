@@ -98,6 +98,7 @@ public class GameScreen extends JamScreen {
     
         viewport = new FitViewport(WORLD_WIDTH, WORLD_HEIGHT);
         camera = new OrthographicCamera();
+        camera.zoom = .8f;
         innerViewport = new FitViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
         innerViewport.update(WORLD_WIDTH, WORLD_HEIGHT);
     
