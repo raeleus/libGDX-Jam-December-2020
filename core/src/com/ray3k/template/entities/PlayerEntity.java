@@ -73,36 +73,34 @@ public class PlayerEntity extends Entity {
     @Override
     public void act(float delta) {
         if (mode == Mode.NORMAL) {
-            float direction;
-            float speed = gameScreen.isBindingPressed(SPRINT) ? SPRINT_SPEED : MOVE_SPEED;
+            setSpeed(gameScreen.isBindingPressed(SPRINT) ? SPRINT_SPEED : MOVE_SPEED);
             if (gameScreen.areAllBindingsPressed(UP, RIGHT)) {
                 animationState.setAnimation(0, PlayerAnimation.northEast, true);
-                direction = 45;
+                setDirection(45);
             } else if (gameScreen.areAllBindingsPressed(DOWN, RIGHT)) {
                 animationState.setAnimation(0, PlayerAnimation.southEast, true);
-                direction = 325;
+                setDirection(325);
             } else if (gameScreen.isBindingPressed(RIGHT)) {
                 animationState.setAnimation(0, PlayerAnimation.east, true);
-                direction = 0;
+                setDirection(0);
             } else if (gameScreen.areAllBindingsPressed(UP, LEFT)) {
                 animationState.setAnimation(0, PlayerAnimation.northWest, true);
-                direction = 135;
+                setDirection(135);
             } else if (gameScreen.areAllBindingsPressed(DOWN, LEFT)) {
                 animationState.setAnimation(0, PlayerAnimation.southWest, true);
-                direction = 215;
+                setDirection(215);
             } else if (gameScreen.isBindingPressed(LEFT)) {
                 animationState.setAnimation(0, PlayerAnimation.west, true);
-                direction = 180;
+                setDirection(180);
             } else if (gameScreen.isBindingPressed(UP)) {
                 animationState.setAnimation(0, PlayerAnimation.north, true);
-                direction = 90;
+                setDirection(90);
             } else if (gameScreen.isBindingPressed(DOWN)) {
                 animationState.setAnimation(0, PlayerAnimation.south, true);
-                direction = 270;
+                setDirection(270);
             } else {
                 animationState.setAnimation(0, PlayerAnimation.stand, true);
-                direction = 0;
-                speed = 0;
+                setMotion(0, 0);
             }
             
             if (gameScreen.isBindingJustPressed(SLIDE)) {
@@ -115,7 +113,7 @@ public class PlayerEntity extends Entity {
             
             if (inputQueue.size > 0 && inputQueue.first() == SLIDE && gameScreen.isAnyBindingPressed(UP, DOWN, LEFT, RIGHT)) {
                 inputQueue.removeIndex(0);
-                speed = SLIDE_SPEED;
+                setSpeed(SLIDE_SPEED);
                 friction = SLIDE_FRICTION;
                 mode = Mode.SLIDING;
                 animationState.setAnimation(0, slide, true);
@@ -123,13 +121,11 @@ public class PlayerEntity extends Entity {
     
             if (inputQueue.size > 0 && inputQueue.peek() == JUMP && gameScreen.isAnyBindingPressed(UP, DOWN, LEFT, RIGHT)) {
                 inputQueue.removeIndex(0);
-                speed = JUMP_SPEED;
+                setSpeed(JUMP_SPEED);
                 friction = JUMP_FRICTION;
                 mode = Mode.JUMPING;
                 animationState.setAnimation(0, jump, false);
             }
-    
-            setMotion(speed, direction);
         }
         
         if (mode == Mode.SLIDING) {
@@ -155,6 +151,24 @@ public class PlayerEntity extends Entity {
             if (gameScreen.isBindingJustPressed(SLIDE)) {
                 inputQueue.add(SLIDE);
             }
+            
+            if (gameScreen.areAllBindingsPressed(UP, RIGHT)) {
+                setDirection(45);
+            } else if (gameScreen.areAllBindingsPressed(DOWN, RIGHT)) {
+                setDirection(325);
+            } else if (gameScreen.isBindingPressed(RIGHT)) {
+                setDirection(0);
+            } else if (gameScreen.areAllBindingsPressed(UP, LEFT)) {
+                setDirection(135);
+            } else if (gameScreen.areAllBindingsPressed(DOWN, LEFT)) {
+                setDirection(215);
+            } else if (gameScreen.isBindingPressed(LEFT)) {
+                setDirection(180);
+            } else if (gameScreen.isBindingPressed(UP)) {
+                setDirection(90);
+            } else if (gameScreen.isBindingPressed(DOWN)) {
+                setDirection(270);
+            }
         }
     
         if (mode == Mode.HURTING) {
@@ -165,7 +179,7 @@ public class PlayerEntity extends Entity {
                 animationState.addAnimation(0, stand, true, 0);
             }
         }
-    
+        
         gameScreen.camera.position.set(x, y, 0);
     }
     

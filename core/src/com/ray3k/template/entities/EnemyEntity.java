@@ -1,17 +1,11 @@
 package com.ray3k.template.entities;
 
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.RandomXS128;
-import com.dongbat.jbump.CollisionFilter;
 import com.dongbat.jbump.Collisions;
-import com.dongbat.jbump.Item;
 import com.dongbat.jbump.Response;
-import com.ray3k.template.screens.*;
 
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.Resources.EnemyAnimation.*;
 import static com.ray3k.template.Resources.*;
-import static com.ray3k.template.Resources.PlayerAnimation.*;
 import static com.ray3k.template.screens.GameScreen.*;
 
 public class EnemyEntity extends Entity {
