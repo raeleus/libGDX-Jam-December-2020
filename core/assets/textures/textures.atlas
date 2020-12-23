@@ -1,75 +1,89 @@
 
 textures.png
-size: 1024,1024
+size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+game/Debug_Map_BASE
+  rotate: false
+  xy: 1, 801
+  size: 558, 713
+  orig: 558, 713
+  offset: 0, 0
+  index: -1
+game/Debug_Map_KEY
+  rotate: false
+  xy: 1, 86
+  size: 558, 713
+  orig: 558, 713
+  offset: 0, 0
+  index: -1
 game/Player_Idle1
-  rotate: true
-  xy: 45, 2
+  rotate: false
+  xy: 561, 843
   size: 23, 39
   orig: 24, 42
   offset: 1, 1
   index: -1
 game/Player_Idle2
-  rotate: true
-  xy: 209, 5
+  rotate: false
+  xy: 561, 802
   size: 20, 39
   orig: 24, 42
   offset: 2, 1
   index: -1
 game/Player_Idle3
-  rotate: true
-  xy: 243, 617
+  rotate: false
+  xy: 803, 1434
   size: 18, 39
   orig: 24, 42
   offset: 2, 1
   index: -1
 game/Player_Idle4
-  rotate: true
-  xy: 127, 4
+  rotate: false
+  xy: 1, 1
   size: 21, 39
   orig: 24, 42
   offset: 2, 1
   index: -1
 game/Player_Idle5
-  rotate: true
-  xy: 86, 2
+  rotate: false
+  xy: 803, 1475
   size: 23, 39
   orig: 24, 42
   offset: 1, 1
   index: -1
 game/Player_Idle6
-  rotate: true
-  xy: 168, 4
+  rotate: false
+  xy: 27, 45
   size: 21, 39
   orig: 24, 42
   offset: 2, 1
   index: -1
 game/Player_Idle7
-  rotate: true
-  xy: 243, 597
+  rotate: false
+  xy: 828, 1475
   size: 18, 39
   orig: 24, 42
   offset: 5, 1
   index: -1
 game/Player_Idle8
-  rotate: true
-  xy: 243, 637
+  rotate: false
+  xy: 586, 843
   size: 20, 39
   orig: 24, 42
   offset: 3, 1
   index: -1
 game/Player_Idle9
-  rotate: true
-  xy: 1, 1
+  rotate: false
+  xy: 1, 42
   size: 24, 42
   orig: 24, 42
   offset: 0, 0
   index: -1
 game/Template_Map_1
   rotate: false
-  xy: 1, 27
+  xy: 561, 884
   size: 240, 630
   orig: 240, 630
   offset: 0, 0

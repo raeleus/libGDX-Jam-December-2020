@@ -153,7 +153,7 @@ public class GameScreen extends JamScreen {
                 entityController.add(decalEntity);
             }
         });
-        reader.readFile(Gdx.files.internal("levels/level-test.json"));
+        reader.readFile(Gdx.files.internal("levels/level-1.json"));
     }
     
     @Override
