@@ -29,7 +29,7 @@ public class EnemyEntity extends Entity {
         skeletonBounds.update(skeleton, true);
         setCollisionBox(skeletonBounds, (item, other) -> {
             if (other.userData instanceof WallEntity || other.userData instanceof  PitEntity) {
-                return Response.slide;
+                return Response.bounce;
             }
             return null;
         });
