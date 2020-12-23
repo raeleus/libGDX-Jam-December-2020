@@ -6,63 +6,63 @@ filter: Nearest,Nearest
 repeat: none
 game/Player_Idle1
   rotate: true
-  xy: 221, 1
-  size: 24, 39
-  orig: 24, 42
-  offset: 0, 1
-  index: -1
-game/Player_Idle2
-  rotate: true
-  xy: 243, 611
-  size: 20, 39
+  xy: 45, 2
+  size: 23, 39
   orig: 24, 42
   offset: 1, 1
   index: -1
+game/Player_Idle2
+  rotate: true
+  xy: 209, 5
+  size: 20, 39
+  orig: 24, 42
+  offset: 2, 1
+  index: -1
 game/Player_Idle3
   rotate: true
-  xy: 243, 633
-  size: 24, 39
+  xy: 243, 617
+  size: 18, 39
   orig: 24, 42
-  offset: 0, 1
+  offset: 2, 1
   index: -1
 game/Player_Idle4
   rotate: true
-  xy: 243, 589
+  xy: 127, 4
+  size: 21, 39
+  orig: 24, 42
+  offset: 2, 1
+  index: -1
+game/Player_Idle5
+  rotate: true
+  xy: 86, 2
+  size: 23, 39
+  orig: 24, 42
+  offset: 1, 1
+  index: -1
+game/Player_Idle6
+  rotate: true
+  xy: 168, 4
+  size: 21, 39
+  orig: 24, 42
+  offset: 2, 1
+  index: -1
+game/Player_Idle7
+  rotate: true
+  xy: 243, 597
+  size: 18, 39
+  orig: 24, 42
+  offset: 5, 1
+  index: -1
+game/Player_Idle8
+  rotate: true
+  xy: 243, 637
   size: 20, 39
   orig: 24, 42
   offset: 3, 1
   index: -1
-game/Player_Idle5
-  rotate: true
-  xy: 1, 1
-  size: 24, 42
-  orig: 24, 42
-  offset: 0, 0
-  index: -1
-game/Player_Idle6
-  rotate: true
-  xy: 45, 1
-  size: 24, 42
-  orig: 24, 42
-  offset: 0, 0
-  index: -1
-game/Player_Idle7
-  rotate: true
-  xy: 89, 1
-  size: 24, 42
-  orig: 24, 42
-  offset: 0, 0
-  index: -1
-game/Player_Idle8
-  rotate: true
-  xy: 133, 1
-  size: 24, 42
-  orig: 24, 42
-  offset: 0, 0
-  index: -1
 game/Player_Idle9
   rotate: true
-  xy: 177, 1
+  xy: 1, 1
   size: 24, 42
   orig: 24, 42
   offset: 0, 0

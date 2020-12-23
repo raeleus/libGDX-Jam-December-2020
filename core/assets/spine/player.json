@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "ahYuPFkZGfBF7FBtitwdlAG1TiY",
+	"hash": "w1QNgnCwISkEh6yBWJMNpHi62FA",
 	"spine": "3.8.99",
 	"x": -12,
 	"y": 0.35,
@@ -47,7 +47,7 @@
 		"slots": {
 			"game/Player_Idle1": {
 				"attachment": [
-					{ "name": "game/Player_Idle2" }
+					{ "name": "game/Player_Idle3" }
 				]
 			}
 		}
@@ -88,7 +88,7 @@
 		"slots": {
 			"game/Player_Idle1": {
 				"attachment": [
-					{ "name": "game/Player_Idle3" }
+					{ "name": "game/Player_Idle5" }
 				]
 			}
 		}
@@ -97,7 +97,7 @@
 		"slots": {
 			"game/Player_Idle1": {
 				"attachment": [
-					{ "name": "game/Player_Idle3" }
+					{ "name": "game/Player_Idle4" }
 				]
 			}
 		}
@@ -106,7 +106,7 @@
 		"slots": {
 			"game/Player_Idle1": {
 				"attachment": [
-					{ "name": "game/Player_Idle3" }
+					{ "name": "game/Player_Idle6" }
 				]
 			}
 		}
@@ -123,6 +123,7 @@
 		"bones": {
 			"bone": {
 				"scale": [
+					{},
 					{ "time": 1, "x": 0, "y": 0 }
 				]
 			}
@@ -138,14 +139,30 @@
 		}
 	},
 	"south": {},
-	"south-east": {},
-	"south-west": {},
+	"south-east": {
+		"slots": {
+			"game/Player_Idle1": {
+				"attachment": [
+					{ "name": "game/Player_Idle3" }
+				]
+			}
+		}
+	},
+	"south-west": {
+		"slots": {
+			"game/Player_Idle1": {
+				"attachment": [
+					{ "name": "game/Player_Idle8" }
+				]
+			}
+		}
+	},
 	"stand": {},
 	"west": {
 		"slots": {
 			"game/Player_Idle1": {
 				"attachment": [
-					{ "name": "game/Player_Idle4" }
+					{ "name": "game/Player_Idle7" }
 				]
 			}
 		}
