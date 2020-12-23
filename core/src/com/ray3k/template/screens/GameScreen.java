@@ -111,7 +111,13 @@ public class GameScreen extends JamScreen {
         var reader = new OgmoReader();
         reader.addListener(new OgmoAdapter() {
             int ordinal;
-            
+            String layer;
+    
+            @Override
+            public void layer(String name, int gridCellWidth, int gridCellHeight, int offsetX, int offsetY) {
+                layer = name;
+            }
+    
             @Override
             public void entity(String name, int id, int x, int y, int width, int height, boolean flippedX,
                                boolean flippedY, int originX, int originY, int rotation, Array<EntityNode> nodes,
@@ -148,9 +154,11 @@ public class GameScreen extends JamScreen {
             @Override
             public void decal(int centerX, int centerY, float scaleX, float scaleY, int rotation, String texture,
                               String folder) {
-                var name = Utils.filePathNoExtension(texture);
-                var decalEntity = new DecalEntity(centerX, centerY, name);
-                entityController.add(decalEntity);
+                if (!layer.equals("template")) {
+                    var name = Utils.filePathNoExtension(texture);
+                    var decalEntity = new DecalEntity(centerX, centerY, name);
+                    entityController.add(decalEntity);
+                }
             }
         });
         reader.readFile(Gdx.files.internal("levels/level-1.json"));
