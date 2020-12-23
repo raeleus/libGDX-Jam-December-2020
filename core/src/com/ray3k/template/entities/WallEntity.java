@@ -5,6 +5,7 @@ import com.dongbat.jbump.CollisionFilter;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Item;
 import com.dongbat.jbump.Response;
+import com.ray3k.template.*;
 
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.screens.GameScreen.*;
@@ -12,6 +13,7 @@ import static com.ray3k.template.screens.GameScreen.*;
 public class WallEntity extends Entity {
     public float width;
     public float height;
+    private static final Color color = Color.valueOf("756e86");
     
     public WallEntity(float width, float height) {
         this.width = width;
@@ -41,7 +43,7 @@ public class WallEntity extends Entity {
     
     @Override
     public void draw(float delta) {
-        shapeDrawer.setColor(Color.ORANGE);
+        shapeDrawer.setColor(color);
         shapeDrawer.filledRectangle(x, y, width, height);
     }
     
