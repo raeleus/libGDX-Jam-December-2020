@@ -122,7 +122,7 @@ public class PlayerEntity extends Entity {
         
         if (mode == Mode.SLIDING) {
             setSpeed(Utils.approach(getSpeed(), 0, friction * delta));
-            if (MathUtils.isZero(getSpeed())) {
+            if (getSpeed() < SPRINT_SPEED) {
                 mode = Mode.NORMAL;
                 animationState.setAnimation(0, stand, true);
             }
@@ -130,8 +130,8 @@ public class PlayerEntity extends Entity {
     
         if (mode == Mode.JUMPING) {
             setSpeed(Utils.approach(getSpeed(), 0, friction * delta));
-            animationState.getCurrent(0).setTrackTime((JUMP_SPEED - getSpeed()) / JUMP_SPEED);
-            if (MathUtils.isZero(getSpeed())) {
+            animationState.getCurrent(0).setTrackTime((JUMP_SPEED - getSpeed()) / (JUMP_SPEED - SPRINT_SPEED));
+            if (getSpeed() < SPRINT_SPEED) {
                 mode = Mode.NORMAL;
                 animationState.addAnimation(0, stand, true, 0);
             }
