@@ -148,6 +148,12 @@ public class GameScreen extends JamScreen {
                         entityController.add(enemy);
                         enemy.updateCollisionBox();
                         break;
+                    case "slideable-obstacle":
+                        var slideable = new SlideableEntity(width, height);
+                        slideable.setPosition(x, y);
+                        entityController.add(slideable);
+                        slideable.updateCollisionBox();
+                        break;
                 }
             }
     

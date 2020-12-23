@@ -5,17 +5,16 @@ import com.dongbat.jbump.CollisionFilter;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Item;
 import com.dongbat.jbump.Response;
-import com.ray3k.template.*;
 
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.screens.GameScreen.*;
 
-public class WallEntity extends Entity {
+public class SlideableEntity extends Entity {
     public float width;
     public float height;
-    private static final Color color = Color.valueOf("756e86");
+    public static Color color = Color.valueOf("d9a1ed");
     
-    public WallEntity(float width, float height) {
+    public SlideableEntity(float width, float height) {
         this.width = width;
         this.height = height;
         setCollisionBox(0, 0, width, height, nullFilter);

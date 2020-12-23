@@ -16,12 +16,7 @@ public class PitEntity extends Entity {
     public PitEntity(float width, float height) {
         this.width = width;
         this.height = height;
-        setCollisionBox(0, 0, width, height, new CollisionFilter() {
-            @Override
-            public Response filter(Item item, Item other) {
-                return null;
-            }
-        });
+        setCollisionBox(0, 0, width, height, nullFilter);
     }
     
     @Override

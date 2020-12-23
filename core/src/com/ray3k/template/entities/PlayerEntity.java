@@ -42,8 +42,11 @@ public class PlayerEntity extends Entity {
         animationState.setAnimation(0, Resources.PlayerAnimation.stand, true);
         skeletonBounds.update(skeleton, true);
         setCollisionBox(skeletonBounds, (item, other) -> {
-            if (other.userData instanceof WallEntity ) {
+            if (other.userData instanceof WallEntity) {
                 return Response.slide;
+            } else if (other.userData instanceof SlideableEntity) {
+                if (mode == Mode.SLIDING) return null;
+                else return Response.slide;
             } else if (other.userData instanceof PitEntity || other.userData instanceof EnemyEntity) {
                 return Response.cross;
             }

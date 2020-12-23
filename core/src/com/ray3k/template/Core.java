@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.dongbat.jbump.CollisionFilter;
+import com.dongbat.jbump.Item;
 import com.dongbat.jbump.Response;
 import com.dongbat.jbump.World;
 import com.esotericsoftware.spine.AnimationStateData;
@@ -48,6 +49,7 @@ public class Core extends JamGame {
     public static int BACKGROUND_DEPTH = 200;
     public static int PROP_DEPTH = 190;
     public static boolean debugging;
+    public static CollisionFilter nullFilter = (item, other) -> null;
     
     @Override
     public void create() {
