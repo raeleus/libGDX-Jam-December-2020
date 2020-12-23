@@ -25,6 +25,7 @@ import com.crashinvaders.vfx.framebuffer.VfxFrameBuffer;
 import com.ray3k.template.*;
 import com.ray3k.template.OgmoReader.*;
 import com.ray3k.template.entities.*;
+import com.ray3k.template.entities.JumpeableEntity.*;
 import com.ray3k.template.screens.DialogPause.*;
 import com.ray3k.template.vfx.*;
 import space.earlygrey.shapedrawer.ShapeDrawer;
@@ -153,6 +154,31 @@ public class GameScreen extends JamScreen {
                         slideable.setPosition(x, y);
                         entityController.add(slideable);
                         slideable.updateCollisionBox();
+                        break;
+                    case "jumpeable-obstacle":
+                        JumpDirection jumpDirection;
+                        var value = valuesMap.get("jump-direction").asString();
+                        switch (value) {
+                            case "north":
+                                jumpDirection = JumpDirection.NORTH;
+                                break;
+                            case "south":
+                                jumpDirection = JumpDirection.SOUTH;
+                                break;
+                            case "east":
+                                jumpDirection = JumpDirection.EAST;
+                                break;
+                            case "west":
+                                jumpDirection = JumpDirection.WEST;
+                                break;
+                            default:
+                                jumpDirection = JumpDirection.ALL;
+                                break;
+                        }
+                        var jumpeable = new JumpeableEntity(width, height, jumpDirection);
+                        jumpeable.setPosition(x, y);
+                        entityController.add(jumpeable);
+                        jumpeable.updateCollisionBox();
                         break;
                 }
             }

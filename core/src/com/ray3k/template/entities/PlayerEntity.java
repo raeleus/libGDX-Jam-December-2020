@@ -47,6 +47,9 @@ public class PlayerEntity extends Entity {
             } else if (other.userData instanceof SlideableEntity) {
                 if (mode == Mode.SLIDING) return null;
                 else return Response.slide;
+            } else if (other.userData instanceof JumpeableEntity) {
+                if (mode == Mode.JUMPING) return null;
+                else return Response.slide;
             } else if (other.userData instanceof PitEntity || other.userData instanceof EnemyEntity) {
                 return Response.cross;
             }
