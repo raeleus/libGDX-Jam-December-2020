@@ -152,6 +152,9 @@ public class PlayerEntity extends Entity {
                 mode = Mode.NORMAL;
                 animationState.addAnimation(0, stand, true, 0);
             }
+            if (gameScreen.isBindingJustPressed(SLIDE)) {
+                inputQueue.add(SLIDE);
+            }
         }
     
         if (mode == Mode.HURTING) {
