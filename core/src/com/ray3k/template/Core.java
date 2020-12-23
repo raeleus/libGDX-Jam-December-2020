@@ -2,6 +2,7 @@ package com.ray3k.template;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.loaders.SkinLoader.SkinParameter;
@@ -10,6 +11,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.dongbat.jbump.CollisionFilter;
@@ -129,7 +131,7 @@ public class Core extends JamGame {
         JamScreen.addKeyBinding(Binding.UP, Input.Keys.W);
         JamScreen.addKeyBinding(Binding.DOWN, Input.Keys.S);
         JamScreen.addKeyBinding(Binding.SPRINT, Keys.SHIFT_LEFT);
-        JamScreen.addKeyBinding(Binding.SLIDE, Keys.CONTROL_LEFT);
+        JamScreen.addButtonBinding(Binding.SLIDE, Buttons.RIGHT);
         JamScreen.addKeyBinding(Binding.JUMP, Keys.SPACE);
     }
 }
