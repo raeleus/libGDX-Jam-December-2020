@@ -41,8 +41,10 @@ public class PitEntity extends Entity {
     
     @Override
     public void draw(float delta) {
-        shapeDrawer.setColor(Color.BLACK);
-        shapeDrawer.filledRectangle(x, y, width, height);
+        if (debugging) {
+            shapeDrawer.setColor(Color.BLACK);
+            shapeDrawer.filledRectangle(x, y, width, height);
+        }
     }
     
     @Override

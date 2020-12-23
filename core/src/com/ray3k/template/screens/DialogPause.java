@@ -78,6 +78,23 @@ public class DialogPause extends Dialog {
                 }
             }
         });
+    
+        root.row();
+        table = new Table();
+        root.add(table);
+        
+        textButton = new TextButton("", skin);
+        textButton.setChecked(debugging);
+        textButton.setText(textButton.isChecked()? "Debug: On" : "Debug: Off");
+        table.add(textButton);
+        textButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                var textButton = (TextButton) actor;
+                debugging = textButton.isChecked();
+                textButton.setText(textButton.isChecked()? "Debug: On" : "Debug: Off");
+            }
+        });
         
         root.row();
         table = new Table();

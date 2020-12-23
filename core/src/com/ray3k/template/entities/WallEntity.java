@@ -43,8 +43,10 @@ public class WallEntity extends Entity {
     
     @Override
     public void draw(float delta) {
-        shapeDrawer.setColor(color);
-        shapeDrawer.filledRectangle(x, y, width, height);
+        if (debugging) {
+            shapeDrawer.setColor(color);
+            shapeDrawer.filledRectangle(x, y, width, height);
+        }
     }
     
     @Override

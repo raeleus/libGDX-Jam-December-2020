@@ -11,7 +11,6 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.dongbat.jbump.CollisionFilter;
@@ -48,6 +47,7 @@ public class Core extends JamGame {
     public static int PROJECTILE_DEPTH = 10;
     public static int BACKGROUND_DEPTH = 200;
     public static int PROP_DEPTH = 190;
+    public static boolean debugging;
     
     @Override
     public void create() {

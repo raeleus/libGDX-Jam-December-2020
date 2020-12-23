@@ -185,9 +185,11 @@ public class PlayerEntity extends Entity {
     
     @Override
     public void draw(float delta) {
-        shapeDrawer.setColor(Color.BLUE);
-        shapeDrawer.setDefaultLineWidth(1);
-        shapeDrawer.rectangle(x + bboxX, y + bboxY, bboxWidth, bboxHeight);
+        if (debugging) {
+            shapeDrawer.setColor(Color.BLUE);
+            shapeDrawer.setDefaultLineWidth(1);
+            shapeDrawer.rectangle(x + bboxX, y + bboxY, bboxWidth, bboxHeight);
+        }
     }
     
     @Override
