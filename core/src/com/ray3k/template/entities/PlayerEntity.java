@@ -3,6 +3,7 @@ package com.ray3k.template.entities;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Rect;
 import com.dongbat.jbump.Response;
@@ -33,6 +34,7 @@ public class PlayerEntity extends Entity {
     private float pitRespawnX;
     private float pitRespawnY;
     public static final Vector2 temp = new Vector2();
+    private Array<Binding> inputQueue = new Array<>();
     
     @Override
     public void create() {
@@ -103,14 +105,24 @@ public class PlayerEntity extends Entity {
                 speed = 0;
             }
             
-            if (gameScreen.isBindingJustPressed(SLIDE) && gameScreen.isAnyBindingPressed(UP, DOWN, LEFT, RIGHT)) {
+            if (gameScreen.isBindingJustPressed(SLIDE)) {
+                inputQueue.add(SLIDE);
+            }
+            
+            if (gameScreen.isBindingJustPressed(JUMP)) {
+                inputQueue.add(JUMP);
+            }
+            
+            if (inputQueue.size > 0 && inputQueue.first() == SLIDE && gameScreen.isAnyBindingPressed(UP, DOWN, LEFT, RIGHT)) {
+                inputQueue.removeIndex(0);
                 speed = SLIDE_SPEED;
                 friction = SLIDE_FRICTION;
                 mode = Mode.SLIDING;
                 animationState.setAnimation(0, slide, true);
             }
     
-            if (gameScreen.isBindingJustPressed(JUMP) && gameScreen.isAnyBindingPressed(UP, DOWN, LEFT, RIGHT)) {
+            if (inputQueue.size > 0 && inputQueue.peek() == JUMP && gameScreen.isAnyBindingPressed(UP, DOWN, LEFT, RIGHT)) {
+                inputQueue.removeIndex(0);
                 speed = JUMP_SPEED;
                 friction = JUMP_FRICTION;
                 mode = Mode.JUMPING;
@@ -123,6 +135,11 @@ public class PlayerEntity extends Entity {
         if (mode == Mode.SLIDING) {
             setSpeed(Utils.approach(getSpeed(), 0, friction * delta));
             if (getSpeed() < SPRINT_SPEED) {
+                mode = Mode.NORMAL;
+                animationState.setAnimation(0, stand, true);
+            }
+            if (gameScreen.isBindingJustPressed(JUMP)) {
+                inputQueue.add(JUMP);
                 mode = Mode.NORMAL;
                 animationState.setAnimation(0, stand, true);
             }
