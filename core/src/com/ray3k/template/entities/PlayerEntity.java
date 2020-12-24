@@ -35,6 +35,7 @@ public class PlayerEntity extends Entity {
     private float pitRespawnY;
     public static final Vector2 temp = new Vector2();
     private Array<Binding> inputQueue = new Array<>();
+    private boolean overObstacle;
     
     @Override
     public void create() {
@@ -45,10 +46,10 @@ public class PlayerEntity extends Entity {
             if (other.userData instanceof WallEntity) {
                 return Response.slide;
             } else if (other.userData instanceof SlideableEntity) {
-                if (mode == Mode.SLIDING) return null;
+                if (mode == Mode.SLIDING) return Response.cross;
                 else return Response.slide;
             } else if (other.userData instanceof JumpeableEntity) {
-                if (mode == Mode.JUMPING) return null;
+                if (mode == Mode.JUMPING) return Response.cross;
                 else return Response.slide;
             } else if (other.userData instanceof PitEntity || other.userData instanceof EnemyEntity) {
                 return Response.cross;
@@ -135,12 +136,12 @@ public class PlayerEntity extends Entity {
         }
         
         if (mode == Mode.SLIDING) {
-            setSpeed(Utils.approach(getSpeed(), 0, friction * delta));
+            setSpeed(Utils.approach(getSpeed(), overObstacle ? SPRINT_SPEED : 0, friction * delta));
             if (getSpeed() < SPRINT_SPEED) {
                 mode = Mode.NORMAL;
                 animationState.setAnimation(0, stand, true);
             }
-            if (gameScreen.isBindingJustPressed(JUMP)) {
+            if (!overObstacle && gameScreen.isBindingJustPressed(JUMP)) {
                 inputQueue.add(JUMP);
                 mode = Mode.NORMAL;
                 animationState.setAnimation(0, stand, true);
@@ -148,32 +149,35 @@ public class PlayerEntity extends Entity {
         }
     
         if (mode == Mode.JUMPING) {
-            setSpeed(Utils.approach(getSpeed(), 0, friction * delta));
+            setSpeed(Utils.approach(getSpeed(), overObstacle ? SPRINT_SPEED : 0, friction * delta));
             animationState.getCurrent(0).setTrackTime((JUMP_SPEED - getSpeed()) / (JUMP_SPEED - SPRINT_SPEED));
             if (getSpeed() < SPRINT_SPEED) {
                 mode = Mode.NORMAL;
                 animationState.addAnimation(0, stand, true, 0);
             }
-            if (gameScreen.isBindingJustPressed(SLIDE)) {
-                inputQueue.add(SLIDE);
-            }
             
-            if (gameScreen.areAllBindingsPressed(UP, RIGHT)) {
-                setDirection(45);
-            } else if (gameScreen.areAllBindingsPressed(DOWN, RIGHT)) {
-                setDirection(325);
-            } else if (gameScreen.isBindingPressed(RIGHT)) {
-                setDirection(0);
-            } else if (gameScreen.areAllBindingsPressed(UP, LEFT)) {
-                setDirection(135);
-            } else if (gameScreen.areAllBindingsPressed(DOWN, LEFT)) {
-                setDirection(215);
-            } else if (gameScreen.isBindingPressed(LEFT)) {
-                setDirection(180);
-            } else if (gameScreen.isBindingPressed(UP)) {
-                setDirection(90);
-            } else if (gameScreen.isBindingPressed(DOWN)) {
-                setDirection(270);
+            if (!overObstacle) {
+                if (gameScreen.isBindingJustPressed(SLIDE)) {
+                    inputQueue.add(SLIDE);
+                }
+    
+                if (gameScreen.areAllBindingsPressed(UP, RIGHT)) {
+                    setDirection(45);
+                } else if (gameScreen.areAllBindingsPressed(DOWN, RIGHT)) {
+                    setDirection(325);
+                } else if (gameScreen.isBindingPressed(RIGHT)) {
+                    setDirection(0);
+                } else if (gameScreen.areAllBindingsPressed(UP, LEFT)) {
+                    setDirection(135);
+                } else if (gameScreen.areAllBindingsPressed(DOWN, LEFT)) {
+                    setDirection(215);
+                } else if (gameScreen.isBindingPressed(LEFT)) {
+                    setDirection(180);
+                } else if (gameScreen.isBindingPressed(UP)) {
+                    setDirection(90);
+                } else if (gameScreen.isBindingPressed(DOWN)) {
+                    setDirection(270);
+                }
             }
         }
     
@@ -187,6 +191,7 @@ public class PlayerEntity extends Entity {
         }
         
         gameScreen.camera.position.set(x, y, 0);
+        overObstacle = false;
     }
     
     @Override
@@ -225,6 +230,12 @@ public class PlayerEntity extends Entity {
                 mode = Mode.HURTING;
                 friction = HURT_FRICTION;
                 animationState.setAnimation(0, hurt, false);
+            }
+    
+            if (mode == Mode.JUMPING && collision.other.userData instanceof JumpeableEntity) {
+                overObstacle = true;
+            } else if (mode == Mode.SLIDING && collision.other.userData instanceof SlideableEntity) {
+                overObstacle = true;
             }
         }
     }
