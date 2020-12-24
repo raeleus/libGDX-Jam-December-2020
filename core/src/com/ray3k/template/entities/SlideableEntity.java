@@ -10,7 +10,7 @@ import com.dongbat.jbump.Response.Result;
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.screens.GameScreen.*;
 
-public class SlideableEntity extends Entity implements Obstacle {
+public class SlideableEntity extends Entity {
     public float width;
     public float height;
     public static Color color = Color.valueOf("d9a1ed");

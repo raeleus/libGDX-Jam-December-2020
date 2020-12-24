@@ -7,7 +7,7 @@ import com.dongbat.jbump.Response.Result;
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.screens.GameScreen.*;
 
-public class JumpeableEntity extends Entity implements Obstacle {
+public class JumpeableEntity extends Entity {
     public float width;
     public float height;
     public static Color color = Color.valueOf("47aded");
