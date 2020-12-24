@@ -10,6 +10,7 @@ import com.dongbat.jbump.Response;
 import com.esotericsoftware.spine.AnimationState.AnimationStateAdapter;
 import com.esotericsoftware.spine.AnimationState.TrackEntry;
 import com.ray3k.template.*;
+import com.ray3k.template.entities.JumpeableEntity.*;
 
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.Core.Binding.*;
@@ -206,6 +207,26 @@ public class PlayerEntity extends Entity {
     @Override
     public void destroy() {
     
+    }
+    
+    @Override
+    public void projectedCollision(Response.Result result) {
+        for (int i = 0; i < result.projectedCollisions.size(); i++) {
+            var collision = result.projectedCollisions.get(i);
+            if (mode == Mode.JUMPING && collision.other.userData instanceof JumpeableEntity) {
+                var jumpeable = (JumpeableEntity) collision.other.userData;
+                if (jumpeable.jumpDirection != JumpDirection.ALL &&
+                        (jumpeable.jumpDirection == JumpDirection.NORTH && collision.normal.y != 1 ||
+                                jumpeable.jumpDirection == JumpDirection.SOUTH && collision.normal.y != -1 ||
+                                jumpeable.jumpDirection == JumpDirection.WEST && collision.normal.x != -1 ||
+                                jumpeable.jumpDirection == JumpDirection.EAST && collision.normal.x != 1)) {
+                    result.goalX = collision.itemRect.x;
+                    result.goalY = collision.itemRect.y;
+                    result.projectedCollisions.remove(i);
+                    i--;
+                }
+            }
+        }
     }
     
     @Override

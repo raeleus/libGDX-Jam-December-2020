@@ -2,6 +2,7 @@ package com.ray3k.template.entities;
 
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Response;
+import com.dongbat.jbump.Response.Result;
 
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.Resources.EnemyAnimation.*;
@@ -51,6 +52,11 @@ public class EnemyEntity extends Entity {
     
     @Override
     public void destroy() {
+    
+    }
+    
+    @Override
+    public void projectedCollision(Result result) {
     
     }
     

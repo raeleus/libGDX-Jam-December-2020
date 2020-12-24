@@ -5,6 +5,7 @@ import com.dongbat.jbump.CollisionFilter;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Item;
 import com.dongbat.jbump.Response;
+import com.dongbat.jbump.Response.Result;
 import com.ray3k.template.*;
 
 import static com.ray3k.template.Core.*;
@@ -46,6 +47,11 @@ public class WallEntity extends Entity {
     
     @Override
     public void destroy() {
+    
+    }
+    
+    @Override
+    public void projectedCollision(Result result) {
     
     }
     

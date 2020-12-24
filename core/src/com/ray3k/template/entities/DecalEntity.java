@@ -2,6 +2,7 @@ package com.ray3k.template.entities;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasSprite;
 import com.dongbat.jbump.Collisions;
+import com.dongbat.jbump.Response.Result;
 import com.ray3k.template.*;
 
 import static com.ray3k.template.Core.*;
@@ -38,6 +39,11 @@ public class DecalEntity extends Entity {
     
     @Override
     public void destroy() {
+    
+    }
+    
+    @Override
+    public void projectedCollision(Result result) {
     
     }
     

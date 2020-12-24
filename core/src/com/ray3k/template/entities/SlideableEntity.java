@@ -5,6 +5,7 @@ import com.dongbat.jbump.CollisionFilter;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Item;
 import com.dongbat.jbump.Response;
+import com.dongbat.jbump.Response.Result;
 
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.screens.GameScreen.*;
@@ -45,6 +46,11 @@ public class SlideableEntity extends Entity implements Obstacle {
     
     @Override
     public void destroy() {
+    
+    }
+    
+    @Override
+    public void projectedCollision(Result result) {
     
     }
     
