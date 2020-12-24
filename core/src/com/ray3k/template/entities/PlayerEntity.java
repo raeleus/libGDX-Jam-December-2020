@@ -22,8 +22,10 @@ public class PlayerEntity extends Entity {
     public static float SPRINT_SPEED = 300;
     public static float MOVE_SPEED = 200;
     public static float SLIDE_SPEED = 600;
+    public static float SLIDE_SPRINT_SPEED = 700;
     public static float SLIDE_FRICTION = 1400;
     public static float JUMP_SPEED = 550;
+    public static float JUMP_SPRINT_SPEED = 650;
     public static float JUMP_FRICTION = 1100;
     public static float HURT_SPEED = 600;
     public static float HURT_FRICTION = 1400;
@@ -121,7 +123,7 @@ public class PlayerEntity extends Entity {
             
             if (inputQueue.size > 0 && inputQueue.first() == SLIDE && gameScreen.isAnyBindingPressed(UP, DOWN, LEFT, RIGHT)) {
                 inputQueue.removeIndex(0);
-                setSpeed(SLIDE_SPEED);
+                setSpeed(gameScreen.isBindingPressed(SPRINT) ? SLIDE_SPRINT_SPEED : SLIDE_SPEED);
                 friction = SLIDE_FRICTION;
                 mode = Mode.SLIDING;
                 animationState.setAnimation(0, slide, true);
@@ -129,7 +131,7 @@ public class PlayerEntity extends Entity {
     
             if (inputQueue.size > 0 && inputQueue.peek() == JUMP && gameScreen.isAnyBindingPressed(UP, DOWN, LEFT, RIGHT)) {
                 inputQueue.removeIndex(0);
-                setSpeed(JUMP_SPEED);
+                setSpeed(gameScreen.isBindingPressed(SPRINT) ? JUMP_SPRINT_SPEED : JUMP_SPEED);
                 friction = JUMP_FRICTION;
                 mode = Mode.JUMPING;
                 animationState.setAnimation(0, jump, false);
@@ -151,7 +153,7 @@ public class PlayerEntity extends Entity {
     
         if (mode == Mode.JUMPING) {
             setSpeed(Utils.approach(getSpeed(), overObstacle ? SPRINT_SPEED : 0, friction * delta));
-            animationState.getCurrent(0).setTrackTime((JUMP_SPEED - getSpeed()) / (JUMP_SPEED - SPRINT_SPEED));
+            animationState.getCurrent(0).setTrackTime(MathUtils.clamp((JUMP_SPEED - getSpeed()) / (JUMP_SPEED - SPRINT_SPEED), 0, 1));
             if (getSpeed() < SPRINT_SPEED) {
                 mode = Mode.NORMAL;
                 animationState.addAnimation(0, stand, true, 0);
