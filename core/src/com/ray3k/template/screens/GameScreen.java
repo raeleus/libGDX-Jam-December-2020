@@ -45,6 +45,7 @@ public class GameScreen extends JamScreen {
     public static final int WORLD_WIDTH = 1024;
     public static final int WORLD_HEIGHT = 576;
     public static RandomXS128 random = new RandomXS128();
+    public static ObjectMap<String, Triggerable> triggerables;
     
     @Override
     public void show() {
@@ -108,6 +109,8 @@ public class GameScreen extends JamScreen {
         vfxManager.resize(WORLD_WIDTH, WORLD_HEIGHT);
         
         entityController.clear();
+        
+        triggerables = new ObjectMap<>();
         
         var reader = new OgmoReader();
         reader.addListener(new OgmoAdapter() {
@@ -179,6 +182,19 @@ public class GameScreen extends JamScreen {
                         jumpeable.setPosition(x, y);
                         entityController.add(jumpeable);
                         jumpeable.updateCollisionBox();
+                        break;
+                    case "disappearing-obstacle":
+                        var disappearing = new DisappearingWallEntity(width, height, valuesMap.get("triggerName").asString(), valuesMap.get("range").asInt());
+                        disappearing.setPosition(x, y);
+                        entityController.add(disappearing);
+                        disappearing.updateCollisionBox();
+                        triggerables.put(disappearing.triggerName, disappearing);
+                        break;
+                    case "button":
+                        var button = new ButtonEntity(width, height, valuesMap.get("triggerName").asString());
+                        button.setPosition(x, y);
+                        entityController.add(button);
+                        button.updateCollisionBox();
                         break;
                 }
             }

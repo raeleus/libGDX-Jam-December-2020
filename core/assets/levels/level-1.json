@@ -77,7 +77,6 @@
           "originY": 24,
           "values": {"jump-direction": "north"}
         },
-        {"name": "disappearing-obstacle", "id": 43, "_eid": "73310051", "x": 301, "y": 498, "width": 24, "height": 36, "originX": 0, "originY": 36},
         {
           "name": "jumpeable-obstacle",
           "id": 44,
@@ -89,6 +88,42 @@
           "originX": 0,
           "originY": 31,
           "values": {"jump-direction": "all"}
+        },
+        {
+          "name": "disappearing-obstacle",
+          "id": 45,
+          "_eid": "73310051",
+          "x": 301,
+          "y": 498,
+          "width": 24,
+          "height": 36,
+          "originX": 0,
+          "originY": 36,
+          "values": {"triggerName": "door1", "range": -1}
+        },
+        {
+          "name": "button",
+          "id": 46,
+          "_eid": "73310983",
+          "x": 280,
+          "y": 536,
+          "width": 8,
+          "height": 12,
+          "originX": 0,
+          "originY": 12,
+          "values": {"triggerName": "door1"}
+        },
+        {
+          "name": "button",
+          "id": 47,
+          "_eid": "73310983",
+          "x": 336,
+          "y": 536,
+          "width": 8,
+          "height": 12,
+          "originX": 0,
+          "originY": 12,
+          "values": {"triggerName": "door1"}
         }
       ]
     },

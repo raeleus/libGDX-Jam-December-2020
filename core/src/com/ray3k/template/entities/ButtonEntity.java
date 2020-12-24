@@ -7,15 +7,17 @@ import com.dongbat.jbump.Response.Result;
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.screens.GameScreen.*;
 
-public class WallEntity extends Entity {
+public class ButtonEntity extends Entity {
     public float width;
     public float height;
-    private static final Color color = Color.valueOf("756e86");
+    public String triggerName;
+    public static Color color = Color.valueOf("ed6b6b");
     
-    public WallEntity(float width, float height) {
+    public ButtonEntity(float width, float height, String triggerName) {
         this.width = width;
         this.height = height;
         setCollisionBox(0, 0, width, height, nullFilter);
+        this.triggerName = triggerName;
     }
     
     @Override

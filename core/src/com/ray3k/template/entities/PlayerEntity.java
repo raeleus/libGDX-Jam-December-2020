@@ -19,6 +19,7 @@ import static com.ray3k.template.Resources.PlayerAnimation.*;
 import static com.ray3k.template.screens.GameScreen.*;
 
 public class PlayerEntity extends Entity {
+    public static PlayerEntity playerEntity;
     public static float SPRINT_SPEED = 300;
     public static float MOVE_SPEED = 200;
     public static float SLIDE_SPEED = 600;
@@ -42,6 +43,7 @@ public class PlayerEntity extends Entity {
     
     @Override
     public void create() {
+        playerEntity = this;
         setSkeletonData(spine_player, spine_playerAnimationData);
         animationState.setAnimation(0, Resources.PlayerAnimation.stand, true);
         skeletonBounds.update(skeleton, true);
@@ -54,7 +56,7 @@ public class PlayerEntity extends Entity {
             } else if (other.userData instanceof JumpeableEntity) {
                 if (mode == Mode.JUMPING) return Response.cross;
                 else return Response.slide;
-            } else if (other.userData instanceof PitEntity || other.userData instanceof EnemyEntity) {
+            } else if (other.userData instanceof PitEntity || other.userData instanceof EnemyEntity || other.userData instanceof ButtonEntity) {
                 return Response.cross;
             }
             return null;
@@ -235,6 +237,13 @@ public class PlayerEntity extends Entity {
     public void collision(Collisions collisions) {
         for (int i = 0; i < collisions.size(); i++) {
             var collision = collisions.get(i);
+            if (collision.other.userData instanceof ButtonEntity) {
+                var button = (ButtonEntity) collision.other.userData;
+                button.destroy = true;
+                var trigger = triggerables.get(button.triggerName);
+                if (trigger != null) trigger.trigger();
+            }
+            
             if (mode != Mode.JUMPING && mode != Mode.PIT_FALLING && collision.other.userData instanceof PitEntity) {
                 if (isInside(getCollisionBoxCenterX(), getCollisionBoxCenterY(), collision.otherRect) &&
                         isInside(getCollisionBoxLeft(), getCollisionBoxCenterY(), collision.otherRect) &&
